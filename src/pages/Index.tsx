@@ -1,13 +1,24 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import Layout from "@/components/Layout";
+import HeroSection from "@/components/sections/HeroSection";
+import AboutSection from "@/components/sections/AboutSection";
+import ServicesSection from "@/components/sections/ServicesSection";
+import ProductsSection from "@/components/sections/ProductsSection";
+import CaseStudiesSection from "@/components/sections/CaseStudiesSection";
+import TestimonialsSection from "@/components/sections/TestimonialsSection";
+import CTASection from "@/components/sections/CTASection";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <Layout>
+      <HeroSection />
+      <AboutSection />
+      <ServicesSection />
+      <ProductsSection />
+      <CaseStudiesSection />
+      <TestimonialsSection />
+      <CTASection />
+    </Layout>
   );
 };
 
