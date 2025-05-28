@@ -1,13 +1,61 @@
 
 import { CheckCircle } from "lucide-react";
+import { useEffect, useRef } from "react";
 
 const AboutSection = () => {
+  const timelineRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    if (timelineRef.current) {
+      const timelineItems = timelineRef.current.querySelectorAll('.timeline-item');
+      timelineItems.forEach((item) => observer.observe(item));
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   const timeline = [
-    { year: "2020", title: "Founded", description: "Started with a vision to transform businesses through technology" },
-    { year: "2021", title: "First 100 Clients", description: "Reached milestone of serving 100+ satisfied clients" },
-    { year: "2022", title: "Product Launch", description: "Launched our flagship LMS and ERP solutions" },
-    { year: "2023", title: "AI Integration", description: "Integrated AI capabilities across all our products" },
-    { year: "2024", title: "Global Expansion", description: "Expanded services to international markets" }
+    { 
+      year: "2020", 
+      title: "Founded", 
+      description: "Started with a vision to transform businesses through technology",
+      image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&h=300&fit=crop"
+    },
+    { 
+      year: "2021", 
+      title: "First 100 Clients", 
+      description: "Reached milestone of serving 100+ satisfied clients",
+      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400&h=300&fit=crop"
+    },
+    { 
+      year: "2022", 
+      title: "Product Launch", 
+      description: "Launched our flagship LMS and ERP solutions",
+      image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop"
+    },
+    { 
+      year: "2023", 
+      title: "AI Integration", 
+      description: "Integrated AI capabilities across all our products",
+      image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=300&fit=crop"
+    },
+    { 
+      year: "2024", 
+      title: "Global Expansion", 
+      description: "Expanded services to international markets",
+      image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=300&fit=crop"
+    }
   ];
 
   const values = [
@@ -67,25 +115,38 @@ const AboutSection = () => {
           </div>
         </div>
 
-        {/* Timeline */}
-        <div className="animate-fade-in">
+        {/* Enhanced Timeline with Images */}
+        <div className="animate-fade-in" ref={timelineRef}>
           <h3 className="text-3xl font-bold text-center text-white mb-12">Our Journey</h3>
           <div className="relative">
             {/* Timeline line */}
-            <div className="absolute left-1/2 transform -translate-x-px h-full w-0.5 bg-primary"></div>
+            <div className="absolute left-1/2 transform -translate-x-px h-full w-0.5 bg-primary hidden lg:block"></div>
             
-            <div className="space-y-12">
+            <div className="space-y-16">
               {timeline.map((item, index) => (
-                <div key={index} className={`flex items-center ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}>
-                  <div className={`w-5/12 ${index % 2 === 0 ? 'text-right pr-8' : 'text-left pl-8'}`}>
-                    <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-primary transition-colors">
-                      <span className="text-primary font-bold text-lg">{item.year}</span>
-                      <h4 className="text-white font-semibold text-xl mt-2">{item.title}</h4>
-                      <p className="text-gray-300 mt-2">{item.description}</p>
+                <div key={index} className={`timeline-item scroll-animate flex flex-col lg:flex-row items-center gap-8 ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
+                  {/* Content Card */}
+                  <div className="w-full lg:w-5/12">
+                    <div className="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-primary transition-all duration-500 card-hover">
+                      <span className="text-primary font-bold text-2xl">{item.year}</span>
+                      <h4 className="text-white font-semibold text-xl mt-2 mb-3">{item.title}</h4>
+                      <p className="text-gray-300 leading-relaxed">{item.description}</p>
                     </div>
                   </div>
-                  {/* Timeline dot */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-black"></div>
+                  
+                  {/* Timeline dot - Hidden on mobile, shown on lg */}
+                  <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-primary rounded-full border-4 border-gray-900 z-10"></div>
+                  
+                  {/* Image */}
+                  <div className="w-full lg:w-5/12">
+                    <div className="rounded-xl overflow-hidden shadow-2xl hover:transform hover:scale-105 transition-all duration-500">
+                      <img 
+                        src={item.image}
+                        alt={`${item.title} - ${item.year}`}
+                        className="w-full h-64 object-cover"
+                      />
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
