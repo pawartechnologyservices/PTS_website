@@ -67,11 +67,11 @@ const ServicesSection = () => {
           {services.map((service, index) => (
             <div 
               key={index}
-              className="group bg-gray-900 p-8 rounded-xl border border-gray-800 hover:border-primary transition-all duration-300 hover:transform hover:-translate-y-1 animate-scale-in"
+              className="group bg-gray-900 p-8 rounded-xl border border-gray-800 hover:border-white transition-all duration-300 hover:transform hover:-translate-y-1 animate-scale-in card-hover"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="text-4xl mb-4">{service.icon}</div>
-              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-primary transition-colors">
+              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-white transition-colors">
                 {service.title}
               </h3>
               <p className="text-gray-300 mb-6 leading-relaxed">
@@ -80,15 +80,15 @@ const ServicesSection = () => {
               <ul className="space-y-2 mb-6">
                 {service.features.map((feature, idx) => (
                   <li key={idx} className="text-gray-400 flex items-center">
-                    <ArrowUp className="w-4 h-4 text-primary mr-2 rotate-45" />
+                    <ArrowUp className="w-4 h-4 text-white mr-2 rotate-45" />
                     {feature}
                   </li>
                 ))}
               </ul>
               <Link to={service.href}>
                 <Button 
-                  variant="outline" 
-                  className="w-full border-primary text-primary hover:bg-primary hover:text-white"
+                  variant="rgb" 
+                  className="w-full"
                 >
                   Learn More
                 </Button>
@@ -100,8 +100,9 @@ const ServicesSection = () => {
         <div className="text-center mt-16 animate-fade-in">
           <Link to="/services">
             <Button 
+              variant="rgb"
               size="lg"
-              className="bg-primary hover:bg-primary/90 text-white px-8 py-3"
+              className="px-8 py-3"
             >
               View All Services
             </Button>
