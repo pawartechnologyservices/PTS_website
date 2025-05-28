@@ -8,29 +8,36 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuSub,
+  DropdownMenuSubTrigger,
+  DropdownMenuSubContent,
 } from "./ui/dropdown-menu";
 import BookingModal from "./BookingModal";
+import RequestDemoModal from "./RequestDemoModal";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showBooking, setShowBooking] = useState(false);
+  const [showDemo, setShowDemo] = useState(false);
 
-  const productDropdownItems = [
-    { label: "New Startup", href: "/products/startup", items: [
-      { label: "Business Plan", href: "/products/startup/business-plan" },
-      { label: "MVP Development", href: "/products/startup/mvp" },
-      { label: "Market Research", href: "/products/startup/research" },
-      { label: "Investor Pitch", href: "/products/startup/pitch" }
-    ]},
-    { label: "Business Growth", href: "/products/growth", items: [
-      { label: "Digital Marketing", href: "/products/growth/digital-marketing" },
-      { label: "SEO Optimization", href: "/products/growth/seo" },
-      { label: "Social Media Management", href: "/products/growth/social-media" },
-      { label: "Content Strategy", href: "/products/growth/content" }
-    ]},
-    { label: "LMS", href: "/products/lms" },
-    { label: "ERP", href: "/products/erp" },
-    { label: "Billing", href: "/products/billing" }
+  const newStartupItems = [
+    { label: "Digital Marketing", href: "/products/startup/digital-marketing" },
+    { label: "Business Planning", href: "/products/startup/business-planning" },
+    { label: "MVP Development", href: "/products/startup/mvp-development" },
+    { label: "Market Research", href: "/products/startup/market-research" }
+  ];
+
+  const businessGrowthItems = [
+    { label: "SEO Services", href: "/products/growth/seo-services" },
+    { label: "Social Media Growth", href: "/products/growth/social-media" },
+    { label: "Content Strategy", href: "/products/growth/content-strategy" },
+    { label: "Lead Generation", href: "/products/growth/lead-generation" }
+  ];
+
+  const indiaItems = [
+    { label: "Blog", href: "/blog" },
+    { label: "Testimonials", href: "/testimonials" },
+    { label: "Careers", href: "/careers" }
   ];
 
   return (
@@ -58,14 +65,79 @@ const Navbar = () => {
                 Services
               </Link>
               
-              {/* Products Dropdown */}
+              {/* Products Dropdown with Sub-menus */}
               <DropdownMenu>
                 <DropdownMenuTrigger className="text-white hover:text-primary transition-colors flex items-center space-x-1">
                   <span>Products</span>
                   <ChevronDown className="w-4 h-4" />
                 </DropdownMenuTrigger>
+                <DropdownMenuContent className="bg-black border-gray-800 text-white w-56">
+                  {/* New Startup Sub-menu */}
+                  <DropdownMenuSub>
+                    <DropdownMenuSubTrigger className="text-white hover:text-primary">
+                      New Startup Solutions
+                    </DropdownMenuSubTrigger>
+                    <DropdownMenuSubContent className="bg-black border-gray-800 text-white">
+                      {newStartupItems.map((item) => (
+                        <DropdownMenuItem key={item.label} asChild>
+                          <Link to={item.href} className="text-white hover:text-primary">
+                            {item.label}
+                          </Link>
+                        </DropdownMenuItem>
+                      ))}
+                    </DropdownMenuSubContent>
+                  </DropdownMenuSub>
+
+                  {/* Business Growth Sub-menu */}
+                  <DropdownMenuSub>
+                    <DropdownMenuSubTrigger className="text-white hover:text-primary">
+                      Business Growth Solutions
+                    </DropdownMenuSubTrigger>
+                    <DropdownMenuSubContent className="bg-black border-gray-800 text-white">
+                      {businessGrowthItems.map((item) => (
+                        <DropdownMenuItem key={item.label} asChild>
+                          <Link to={item.href} className="text-white hover:text-primary">
+                            {item.label}
+                          </Link>
+                        </DropdownMenuItem>
+                      ))}
+                    </DropdownMenuSubContent>
+                  </DropdownMenuSub>
+
+                  {/* Core Products */}
+                  <DropdownMenuItem asChild>
+                    <Link to="/products/lms" className="text-white hover:text-primary">
+                      Learning Management System
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link to="/products/erp" className="text-white hover:text-primary">
+                      Enterprise Resource Planning
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link to="/products/billing" className="text-white hover:text-primary">
+                      Billing & Invoice System
+                    </Link>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+
+              <Link to="/projects" className="text-white hover:text-primary transition-colors">
+                Our Projects
+              </Link>
+              <Link to="/case-studies" className="text-white hover:text-primary transition-colors">
+                Case Studies
+              </Link>
+
+              {/* India Dropdown */}
+              <DropdownMenu>
+                <DropdownMenuTrigger className="text-white hover:text-primary transition-colors flex items-center space-x-1">
+                  <span>India</span>
+                  <ChevronDown className="w-4 h-4" />
+                </DropdownMenuTrigger>
                 <DropdownMenuContent className="bg-black border-gray-800 text-white">
-                  {productDropdownItems.map((item) => (
+                  {indiaItems.map((item) => (
                     <DropdownMenuItem key={item.label} asChild>
                       <Link to={item.href} className="text-white hover:text-primary">
                         {item.label}
@@ -75,23 +147,8 @@ const Navbar = () => {
                 </DropdownMenuContent>
               </DropdownMenu>
 
-              <Link to="/case-studies" className="text-white hover:text-primary transition-colors">
-                Case Studies
-              </Link>
-              <Link to="/blog" className="text-white hover:text-primary transition-colors">
-                Blog
-              </Link>
-              <Link to="/testimonials" className="text-white hover:text-primary transition-colors">
-                Testimonials
-              </Link>
-              <Link to="/careers" className="text-white hover:text-primary transition-colors">
-                Careers
-              </Link>
               <Link to="/contact" className="text-white hover:text-primary transition-colors">
                 Contact
-              </Link>
-              <Link to="/team" className="text-white hover:text-primary transition-colors">
-                Team
               </Link>
             </div>
 
@@ -130,6 +187,9 @@ const Navbar = () => {
                 <Link to="/products" className="block px-3 py-2 text-white hover:text-primary">
                   Products
                 </Link>
+                <Link to="/projects" className="block px-3 py-2 text-white hover:text-primary">
+                  Our Projects
+                </Link>
                 <Link to="/case-studies" className="block px-3 py-2 text-white hover:text-primary">
                   Case Studies
                 </Link>
@@ -144,9 +204,6 @@ const Navbar = () => {
                 </Link>
                 <Link to="/contact" className="block px-3 py-2 text-white hover:text-primary">
                   Contact
-                </Link>
-                <Link to="/team" className="block px-3 py-2 text-white hover:text-primary">
-                  Team
                 </Link>
                 <Button 
                   onClick={() => setShowBooking(true)}
@@ -163,6 +220,10 @@ const Navbar = () => {
       <BookingModal 
         isOpen={showBooking} 
         onClose={() => setShowBooking(false)} 
+      />
+      <RequestDemoModal 
+        isOpen={showDemo} 
+        onClose={() => setShowDemo(false)} 
       />
     </>
   );

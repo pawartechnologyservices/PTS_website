@@ -1,6 +1,7 @@
 
 import { Button } from "../ui/button";
 import { ArrowUp } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const ServicesSection = () => {
   const services = [
@@ -8,37 +9,43 @@ const ServicesSection = () => {
       title: "Web Development",
       description: "Custom web applications built with modern frameworks and responsive design.",
       features: ["React/Next.js", "Node.js Backend", "Mobile Responsive", "SEO Optimized"],
-      icon: "💻"
+      icon: "💻",
+      href: "/services/web-development"
     },
     {
       title: "Software Development", 
       description: "End-to-end software solutions tailored to your business requirements.",
       features: ["Custom Software", "API Development", "Database Design", "Cloud Integration"],
-      icon: "⚙️"
+      icon: "⚙️",
+      href: "/services/software-development"
     },
     {
       title: "Digital Marketing",
       description: "Comprehensive digital marketing strategies to grow your online presence.",
       features: ["SEO/SEM", "Social Media", "Content Marketing", "Analytics"],
-      icon: "📈"
+      icon: "📈",
+      href: "/services/digital-marketing"
     },
     {
       title: "UI/UX Design",
       description: "User-centered design that creates engaging and intuitive experiences.",
       features: ["User Research", "Wireframing", "Prototyping", "Design Systems"],
-      icon: "🎨"
+      icon: "🎨",
+      href: "/services/ui-ux-design"
     },
     {
-      title: "Strategy Consulting",
-      description: "Technology strategy and digital transformation consulting services.",
-      features: ["Digital Strategy", "Process Optimization", "Technology Audit", "Roadmap Planning"],
-      icon: "💡"
+      title: "HR Services",
+      description: "Comprehensive human resource management and consulting services.",
+      features: ["Recruitment", "Training", "Performance Management", "HR Consulting"],
+      icon: "👥",
+      href: "/services/hr-service"
     },
     {
       title: "AI Solutions",
       description: "Artificial intelligence and machine learning solutions for business automation.",
       features: ["Machine Learning", "Data Analytics", "Automation", "Predictive Models"],
-      icon: "🤖"
+      icon: "🤖",
+      href: "/services/ai-solutions"
     }
   ];
 
@@ -78,23 +85,27 @@ const ServicesSection = () => {
                   </li>
                 ))}
               </ul>
-              <Button 
-                variant="outline" 
-                className="w-full border-primary text-primary hover:bg-primary hover:text-white"
-              >
-                Learn More
-              </Button>
+              <Link to={service.href}>
+                <Button 
+                  variant="outline" 
+                  className="w-full border-primary text-primary hover:bg-primary hover:text-white"
+                >
+                  Learn More
+                </Button>
+              </Link>
             </div>
           ))}
         </div>
 
         <div className="text-center mt-16 animate-fade-in">
-          <Button 
-            size="lg"
-            className="bg-primary hover:bg-primary/90 text-white px-8 py-3"
-          >
-            View All Services
-          </Button>
+          <Link to="/services">
+            <Button 
+              size="lg"
+              className="bg-primary hover:bg-primary/90 text-white px-8 py-3"
+            >
+              View All Services
+            </Button>
+          </Link>
         </div>
       </div>
     </section>
