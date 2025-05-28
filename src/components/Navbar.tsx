@@ -11,7 +11,6 @@ import {
   DropdownMenuSub,
   DropdownMenuSubTrigger,
   DropdownMenuSubContent,
-  DropdownMenuSeparator,
 } from "./ui/dropdown-menu";
 import BookingModal from "./BookingModal";
 import RequestDemoModal from "./RequestDemoModal";
@@ -35,22 +34,6 @@ const Navbar = () => {
     { label: "Lead Generation", href: "/products/growth/lead-generation" }
   ];
 
-  const servicesItems = [
-    { label: "Web Development", href: "/services/web-development" },
-    { label: "Software Development", href: "/services/software-development" },
-    { label: "Digital Marketing", href: "/services/digital-marketing" },
-    { label: "UI/UX Design", href: "/services/ui-ux-design" },
-    { label: "HR Services", href: "/services/hr-service" },
-    { label: "AI Solutions", href: "/services/ai-solutions" }
-  ];
-
-  const caseStudyItems = [
-    { label: "E-commerce Success Story", href: "/case-studies/ecommerce" },
-    { label: "SaaS Platform Growth", href: "/case-studies/saas" },
-    { label: "Enterprise Digital Transformation", href: "/case-studies/enterprise" },
-    { label: "Startup MVP Launch", href: "/case-studies/startup" }
-  ];
-
   const indiaItems = [
     { label: "Blog", href: "/blog" },
     { label: "Testimonials", href: "/testimonials" },
@@ -59,7 +42,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-md border-b border-gray-800">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Logo */}
@@ -72,52 +55,32 @@ const Navbar = () => {
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-8">
-              <Link to="/" className="text-white hover:text-gray-300 transition-colors">
+              <Link to="/" className="text-white hover:text-primary transition-colors">
                 Home
               </Link>
-              <Link to="/about" className="text-white hover:text-gray-300 transition-colors">
+              <Link to="/about" className="text-white hover:text-primary transition-colors">
                 About Us
               </Link>
-              
-              {/* Services Dropdown */}
-              <DropdownMenu>
-                <DropdownMenuTrigger className="text-white hover:text-gray-300 transition-colors flex items-center space-x-1">
-                  <span>Services</span>
-                  <ChevronDown className="w-4 h-4" />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="dropdown-content w-64">
-                  {servicesItems.map((item) => (
-                    <DropdownMenuItem key={item.label} asChild className="dropdown-item">
-                      <Link to={item.href} className="text-white hover:text-gray-300 flex items-center px-4 py-2">
-                        {item.label}
-                      </Link>
-                    </DropdownMenuItem>
-                  ))}
-                  <DropdownMenuSeparator className="bg-gray-700" />
-                  <DropdownMenuItem asChild className="dropdown-item">
-                    <Link to="/services" className="text-white hover:text-gray-300 flex items-center px-4 py-2 font-semibold">
-                      View All Services
-                    </Link>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <Link to="/services" className="text-white hover:text-primary transition-colors">
+                Services
+              </Link>
               
               {/* Products Dropdown with Sub-menus */}
               <DropdownMenu>
-                <DropdownMenuTrigger className="text-white hover:text-gray-300 transition-colors flex items-center space-x-1">
+                <DropdownMenuTrigger className="text-white hover:text-primary transition-colors flex items-center space-x-1">
                   <span>Products</span>
                   <ChevronDown className="w-4 h-4" />
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="dropdown-content w-64">
+                <DropdownMenuContent className="bg-black border-gray-800 text-white w-56">
                   {/* New Startup Sub-menu */}
                   <DropdownMenuSub>
-                    <DropdownMenuSubTrigger className="text-white hover:text-gray-300 dropdown-item">
+                    <DropdownMenuSubTrigger className="text-white hover:text-primary">
                       New Startup Solutions
                     </DropdownMenuSubTrigger>
-                    <DropdownMenuSubContent className="dropdown-content">
+                    <DropdownMenuSubContent className="bg-black border-gray-800 text-white">
                       {newStartupItems.map((item) => (
-                        <DropdownMenuItem key={item.label} asChild className="dropdown-item">
-                          <Link to={item.href} className="text-white hover:text-gray-300">
+                        <DropdownMenuItem key={item.label} asChild>
+                          <Link to={item.href} className="text-white hover:text-primary">
                             {item.label}
                           </Link>
                         </DropdownMenuItem>
@@ -127,13 +90,13 @@ const Navbar = () => {
 
                   {/* Business Growth Sub-menu */}
                   <DropdownMenuSub>
-                    <DropdownMenuSubTrigger className="text-white hover:text-gray-300 dropdown-item">
+                    <DropdownMenuSubTrigger className="text-white hover:text-primary">
                       Business Growth Solutions
                     </DropdownMenuSubTrigger>
-                    <DropdownMenuSubContent className="dropdown-content">
+                    <DropdownMenuSubContent className="bg-black border-gray-800 text-white">
                       {businessGrowthItems.map((item) => (
-                        <DropdownMenuItem key={item.label} asChild className="dropdown-item">
-                          <Link to={item.href} className="text-white hover:text-gray-300">
+                        <DropdownMenuItem key={item.label} asChild>
+                          <Link to={item.href} className="text-white hover:text-primary">
                             {item.label}
                           </Link>
                         </DropdownMenuItem>
@@ -141,59 +104,42 @@ const Navbar = () => {
                     </DropdownMenuSubContent>
                   </DropdownMenuSub>
 
-                  <DropdownMenuSeparator className="bg-gray-700" />
-
                   {/* Core Products */}
-                  <DropdownMenuItem asChild className="dropdown-item">
-                    <Link to="/products/lms" className="text-white hover:text-gray-300">
+                  <DropdownMenuItem asChild>
+                    <Link to="/products/lms" className="text-white hover:text-primary">
                       Learning Management System
                     </Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem asChild className="dropdown-item">
-                    <Link to="/products/erp" className="text-white hover:text-gray-300">
+                  <DropdownMenuItem asChild>
+                    <Link to="/products/erp" className="text-white hover:text-primary">
                       Enterprise Resource Planning
                     </Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem asChild className="dropdown-item">
-                    <Link to="/products/billing" className="text-white hover:text-gray-300">
+                  <DropdownMenuItem asChild>
+                    <Link to="/products/billing" className="text-white hover:text-primary">
                       Billing & Invoice System
                     </Link>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
 
-              <Link to="/projects" className="text-white hover:text-gray-300 transition-colors">
+              <Link to="/projects" className="text-white hover:text-primary transition-colors">
                 Our Projects
               </Link>
+              <Link to="/case-studies" className="text-white hover:text-primary transition-colors">
+                Case Studies
+              </Link>
 
-              {/* India Dropdown with Case Studies */}
+              {/* India Dropdown */}
               <DropdownMenu>
-                <DropdownMenuTrigger className="text-white hover:text-gray-300 transition-colors flex items-center space-x-1">
+                <DropdownMenuTrigger className="text-white hover:text-primary transition-colors flex items-center space-x-1">
                   <span>India</span>
                   <ChevronDown className="w-4 h-4" />
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="dropdown-content w-64">
-                  {/* Case Studies Sub-menu */}
-                  <DropdownMenuSub>
-                    <DropdownMenuSubTrigger className="text-white hover:text-gray-300 dropdown-item">
-                      Case Studies
-                    </DropdownMenuSubTrigger>
-                    <DropdownMenuSubContent className="dropdown-content">
-                      {caseStudyItems.map((item) => (
-                        <DropdownMenuItem key={item.label} asChild className="dropdown-item">
-                          <Link to={item.href} className="text-white hover:text-gray-300">
-                            {item.label}
-                          </Link>
-                        </DropdownMenuItem>
-                      ))}
-                    </DropdownMenuSubContent>
-                  </DropdownMenuSub>
-
-                  <DropdownMenuSeparator className="bg-gray-700" />
-
+                <DropdownMenuContent className="bg-black border-gray-800 text-white">
                   {indiaItems.map((item) => (
-                    <DropdownMenuItem key={item.label} asChild className="dropdown-item">
-                      <Link to={item.href} className="text-white hover:text-gray-300">
+                    <DropdownMenuItem key={item.label} asChild>
+                      <Link to={item.href} className="text-white hover:text-primary">
                         {item.label}
                       </Link>
                     </DropdownMenuItem>
@@ -201,7 +147,7 @@ const Navbar = () => {
                 </DropdownMenuContent>
               </DropdownMenu>
 
-              <Link to="/contact" className="text-white hover:text-gray-300 transition-colors">
+              <Link to="/contact" className="text-white hover:text-primary transition-colors">
                 Contact
               </Link>
             </div>
@@ -210,7 +156,7 @@ const Navbar = () => {
             <div className="hidden lg:flex items-center space-x-4">
               <Button 
                 onClick={() => setShowBooking(true)}
-                variant="rgb"
+                className="bg-primary hover:bg-primary/90 text-white"
               >
                 Book Appointment
               </Button>
@@ -219,7 +165,7 @@ const Navbar = () => {
             {/* Mobile menu button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden text-white hover:text-gray-300 transition-colors"
+              className="lg:hidden text-white hover:text-primary transition-colors"
             >
               <Menu className="w-6 h-6" />
             </button>
@@ -229,40 +175,39 @@ const Navbar = () => {
           {isOpen && (
             <div className="lg:hidden bg-black border-t border-gray-800">
               <div className="px-2 pt-2 pb-3 space-y-1">
-                <Link to="/" className="block px-3 py-2 text-white hover:text-gray-300">
+                <Link to="/" className="block px-3 py-2 text-white hover:text-primary">
                   Home
                 </Link>
-                <Link to="/about" className="block px-3 py-2 text-white hover:text-gray-300">
+                <Link to="/about" className="block px-3 py-2 text-white hover:text-primary">
                   About Us
                 </Link>
-                <Link to="/services" className="block px-3 py-2 text-white hover:text-gray-300">
+                <Link to="/services" className="block px-3 py-2 text-white hover:text-primary">
                   Services
                 </Link>
-                <Link to="/products" className="block px-3 py-2 text-white hover:text-gray-300">
+                <Link to="/products" className="block px-3 py-2 text-white hover:text-primary">
                   Products
                 </Link>
-                <Link to="/projects" className="block px-3 py-2 text-white hover:text-gray-300">
+                <Link to="/projects" className="block px-3 py-2 text-white hover:text-primary">
                   Our Projects
                 </Link>
-                <Link to="/case-studies" className="block px-3 py-2 text-white hover:text-gray-300">
+                <Link to="/case-studies" className="block px-3 py-2 text-white hover:text-primary">
                   Case Studies
                 </Link>
-                <Link to="/blog" className="block px-3 py-2 text-white hover:text-gray-300">
+                <Link to="/blog" className="block px-3 py-2 text-white hover:text-primary">
                   Blog
                 </Link>
-                <Link to="/testimonials" className="block px-3 py-2 text-white hover:text-gray-300">
+                <Link to="/testimonials" className="block px-3 py-2 text-white hover:text-primary">
                   Testimonials
                 </Link>
-                <Link to="/careers" className="block px-3 py-2 text-white hover:text-gray-300">
+                <Link to="/careers" className="block px-3 py-2 text-white hover:text-primary">
                   Careers
                 </Link>
-                <Link to="/contact" className="block px-3 py-2 text-white hover:text-gray-300">
+                <Link to="/contact" className="block px-3 py-2 text-white hover:text-primary">
                   Contact
                 </Link>
                 <Button 
                   onClick={() => setShowBooking(true)}
-                  variant="rgb"
-                  className="w-full mt-4"
+                  className="w-full mt-4 bg-primary hover:bg-primary/90 text-white"
                 >
                   Book Appointment
                 </Button>

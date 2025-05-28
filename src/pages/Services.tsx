@@ -119,18 +119,18 @@ const Services = () => {
             {services.map((service, index) => (
               <div 
                 key={index}
-                className="bg-gray-900 p-8 rounded-2xl border border-gray-800 hover:border-white transition-all duration-300 group animate-scale-in card-hover"
+                className="bg-gray-900 p-8 rounded-2xl border border-gray-800 hover:border-primary transition-all duration-300 group animate-scale-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="flex items-start justify-between mb-6">
                   <div className="text-5xl">{service.icon}</div>
                   <div className="text-right">
                     <div className="text-sm text-gray-400">Starting from</div>
-                    <div className="text-2xl font-bold text-white">{service.startingPrice}</div>
+                    <div className="text-2xl font-bold text-primary">{service.startingPrice}</div>
                   </div>
                 </div>
 
-                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-white transition-colors">
+                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-primary transition-colors">
                   {service.title}
                 </h3>
                 
@@ -143,7 +143,7 @@ const Services = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {service.features.map((feature, idx) => (
                       <div key={idx} className="flex items-center text-gray-300 text-sm">
-                        <CheckCircle className="w-4 h-4 text-white mr-2 flex-shrink-0" />
+                        <CheckCircle className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
                         {feature}
                       </div>
                     ))}
@@ -154,7 +154,7 @@ const Services = () => {
                   <h4 className="text-white font-semibold mb-3">Technologies:</h4>
                   <div className="flex flex-wrap gap-2">
                     {service.technologies.map((tech, idx) => (
-                      <span key={idx} className="bg-white/20 text-white px-3 py-1 rounded-full text-xs">
+                      <span key={idx} className="bg-primary/20 text-primary px-3 py-1 rounded-full text-xs">
                         {tech}
                       </span>
                     ))}
@@ -162,7 +162,7 @@ const Services = () => {
                 </div>
 
                 <div className="flex gap-3">
-                  <Button variant="rgb" className="flex-1">
+                  <Button className="flex-1 bg-primary hover:bg-primary/90 text-white">
                     Get Quote
                   </Button>
                   <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800">
@@ -200,7 +200,7 @@ const Services = () => {
                 className="text-center animate-fade-in"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
-                <div className="bg-white text-black text-2xl font-bold w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="bg-primary text-white text-2xl font-bold w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   {phase.step}
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">{phase.title}</h3>
@@ -221,10 +221,10 @@ const Services = () => {
             Let's discuss how we can help transform your business with our technology solutions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
-            <Button variant="rgb" size="lg" className="px-8 py-3">
+            <Button size="lg" className="bg-primary hover:bg-primary/90 text-white px-8 py-3">
               Get Free Consultation
             </Button>
-            <Button variant="outline" size="lg" className="border-gray-600 text-gray-300 hover:bg-gray-800 px-8 py-3">
+            <Button size="lg" variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800 px-8 py-3">
               View Portfolio
             </Button>
           </div>
