@@ -1,5 +1,6 @@
 
 import Layout from "@/components/Layout";
+import AboutCharts from "@/components/AboutCharts";
 import { CheckCircle, Users, Award, Globe } from "lucide-react";
 
 const AboutUs = () => {
@@ -14,7 +15,9 @@ const AboutUs = () => {
     { name: "Rajesh Pawar", role: "Founder & CEO", expertise: "Technology Strategy", image: "👨‍💼" },
     { name: "Priya Sharma", role: "CTO", expertise: "Software Architecture", image: "👩‍💻" },
     { name: "Amit Kumar", role: "Head of Development", expertise: "Full Stack Development", image: "👨‍💻" },
-    { name: "Sneha Patil", role: "Design Director", expertise: "UI/UX Design", image: "👩‍🎨" }
+    { name: "Sneha Patil", role: "Design Director", expertise: "UI/UX Design", image: "👩‍🎨" },
+    { name: "Vikram Singh", role: "Digital Marketing Head", expertise: "Growth Marketing", image: "👨‍📊" },
+    { name: "Kavya Reddy", role: "Project Manager", expertise: "Agile Management", image: "👩‍💼" }
   ];
 
   return (
@@ -29,6 +32,19 @@ const AboutUs = () => {
             We are innovators, problem-solvers, and technology enthusiasts dedicated to 
             transforming businesses through cutting-edge digital solutions.
           </p>
+        </div>
+      </section>
+
+      {/* Hero Image */}
+      <section className="py-16 bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="rounded-2xl overflow-hidden animate-scale-in">
+            <img 
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=600&fit=crop"
+              alt="Team collaboration"
+              className="w-full h-96 object-cover"
+            />
+          </div>
         </div>
       </section>
 
@@ -47,8 +63,11 @@ const AboutUs = () => {
         </div>
       </section>
 
+      {/* Charts Section */}
+      <AboutCharts />
+
       {/* Mission & Vision */}
-      <section className="py-20 bg-gray-900">
+      <section className="py-20 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div className="animate-slide-in-left">
@@ -61,6 +80,11 @@ const AboutUs = () => {
                 We believe that every business deserves access to world-class technology solutions 
                 that can drive growth, improve efficiency, and create lasting value.
               </p>
+              <img 
+                src="https://images.unsplash.com/photo-1553484771-371a605b060b?w=600&h=400&fit=crop"
+                alt="Mission"
+                className="rounded-xl w-full h-64 object-cover mt-6"
+              />
             </div>
             
             <div className="animate-slide-in-right">
@@ -73,13 +97,18 @@ const AboutUs = () => {
                 We envision a future where technology seamlessly integrates with business processes, 
                 creating unprecedented opportunities for growth and innovation.
               </p>
+              <img 
+                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&h=400&fit=crop"
+                alt="Vision"
+                className="rounded-xl w-full h-64 object-cover mt-6"
+              />
             </div>
           </div>
         </div>
       </section>
 
       {/* Leadership Team */}
-      <section className="py-20 bg-black">
+      <section className="py-20 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl font-bold mb-6">
@@ -91,11 +120,11 @@ const AboutUs = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {team.map((member, index) => (
               <div 
                 key={index} 
-                className="bg-gray-900 p-6 rounded-xl border border-gray-800 hover:border-primary transition-colors animate-scale-in"
+                className="bg-black p-6 rounded-xl border border-gray-800 hover:border-primary transition-colors animate-scale-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="text-6xl mb-4 text-center">{member.image}</div>
@@ -109,7 +138,7 @@ const AboutUs = () => {
       </section>
 
       {/* Company Values */}
-      <section className="py-20 bg-gray-900">
+      <section className="py-20 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl font-bold mb-6">
@@ -129,7 +158,7 @@ const AboutUs = () => {
             ].map((value, index) => (
               <div 
                 key={index}
-                className="bg-black p-8 rounded-xl border border-gray-800 hover:border-primary transition-colors animate-fade-in"
+                className="bg-gray-900 p-8 rounded-xl border border-gray-800 hover:border-primary transition-colors animate-fade-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="text-4xl mb-4">{value.icon}</div>
