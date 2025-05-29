@@ -210,7 +210,7 @@ const Navbar = () => {
             <div className="hidden lg:flex items-center space-x-4">
               <Button 
                 onClick={() => setShowBooking(true)}
-                variant="rgb"
+                variant="redblue"
               >
                 Book Appointment
               </Button>
@@ -261,7 +261,7 @@ const Navbar = () => {
                 </Link>
                 <Button 
                   onClick={() => setShowBooking(true)}
-                  variant="rgb"
+                  variant="redblue"
                   className="w-full mt-4"
                 >
                   Book Appointment

@@ -253,7 +253,7 @@ const WebDevelopmentDetail = () => {
                   </div>
                 ))}
               </div>
-              <Button variant="rgb" className="mt-8">
+              <Button variant="redblue" className="mt-8">
                 Start Your Web Project
               </Button>
             </div>
@@ -275,7 +275,7 @@ const WebDevelopmentDetail = () => {
           <p className="text-gray-300 text-lg max-w-3xl mx-auto mb-12">
             Let's create a powerful web application that drives your business forward.
           </p>
-          <Button variant="rgb" size="lg" className="text-lg">
+          <Button variant="redblue" size="lg" className="text-lg">
             Get Free Web Consultation
           </Button>
         </div>
