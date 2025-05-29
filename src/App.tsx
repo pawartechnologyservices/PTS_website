@@ -23,6 +23,7 @@ import DigitalMarketing from "./pages/startup/DigitalMarketing";
 import BusinessPlanning from "./pages/startup/BusinessPlanning";
 import MVPDevelopment from "./pages/startup/MVPDevelopment";
 import MarketResearch from "./pages/startup/MarketResearch";
+import ResumeServices from "./pages/startup/ResumeServices";
 import SEOServices from "./pages/growth/SEOServices";
 import SocialMediaGrowth from "./pages/growth/SocialMediaGrowth";
 import ContentStrategy from "./pages/growth/ContentStrategy";
@@ -53,6 +54,7 @@ const App = () => (
           <Route path="/products/startup/business-planning" element={<BusinessPlanning />} />
           <Route path="/products/startup/mvp-development" element={<MVPDevelopment />} />
           <Route path="/products/startup/market-research" element={<MarketResearch />} />
+          <Route path="/products/startup/resume-services" element={<ResumeServices />} />
           
           {/* Business Growth Solutions */}
           <Route path="/products/growth/seo-services" element={<SEOServices />} />

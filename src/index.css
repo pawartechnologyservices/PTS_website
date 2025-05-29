@@ -110,35 +110,6 @@
   background-clip: text;
 }
 
-/* RGB Gradient Border Buttons */
-.rgb-gradient-border {
-  position: relative;
-  background: black;
-  border-radius: 8px;
-  padding: 2px;
-  background: linear-gradient(45deg, #ff0000, #ff7700, #ffdd00, #00ff00, #0099ff, #6600ff, #ff0099, #ff0000);
-  background-size: 400% 400%;
-  animation: gradient-shift 3s ease infinite;
-}
-
-.rgb-gradient-border::before {
-  content: '';
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
-  background: black;
-  border-radius: 6px;
-  z-index: -1;
-}
-
-@keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
@@ -356,4 +327,99 @@ html {
   to {
     box-shadow: 0 0 40px rgba(255, 255, 255, 0.4);
   }
+}
+
+/* Advanced Scroll Animation System */
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomInRotate {
+  from {
+    opacity: 0;
+    transform: scale(0.5) rotate(-10deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Section-specific animations */
+.section-animate-1 {
+  animation: slideInFromTop 1.2s ease-out forwards;
+}
+
+.section-animate-2 {
+  animation: slideInFromBottom 1s ease-out 0.2s forwards;
+}
+
+.section-animate-3 {
+  animation: zoomInRotate 1.5s ease-out 0.4s forwards;
+}
+
+/* Staggered card animations */
+.card-stagger-1 { animation-delay: 0.1s; }
+.card-stagger-2 { animation-delay: 0.2s; }
+.card-stagger-3 { animation-delay: 0.3s; }
+.card-stagger-4 { animation-delay: 0.4s; }
+.card-stagger-5 { animation-delay: 0.5s; }
+.card-stagger-6 { animation-delay: 0.6s; }
+
+/* Enhanced scroll reveal system */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(100px) scale(0.9);
+  transition: all 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Floating animation for hero elements */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Typewriter effect */
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.typewriter {
+  overflow: hidden;
+  border-right: 3px solid;
+  white-space: nowrap;
+  animation: typewriter 3s steps(40, end), blink 1s infinite;
+}
+
+@keyframes blink {
+  from, to { border-color: transparent; }
+  50% { border-color: white; }
 }

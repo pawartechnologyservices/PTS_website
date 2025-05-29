@@ -38,6 +38,7 @@ const DigitalMarketing = () => {
 
   return (
     <Layout>
+      {/* Hero Section */}
       <section className="pt-24 pb-20 gradient-bg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="text-6xl mb-6">📱</div>
@@ -102,7 +103,7 @@ const DigitalMarketing = () => {
                   </div>
                 ))}
               </div>
-              <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-3 mt-8">
+              <Button variant="redblue" className="px-8 py-3 mt-8">
                 Start Your Campaign
               </Button>
             </div>
@@ -124,7 +125,7 @@ const DigitalMarketing = () => {
           <p className="text-gray-300 text-lg max-w-3xl mx-auto mb-12">
             Let's create a digital marketing strategy that drives real results for your startup.
           </p>
-          <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-3 text-lg">
+          <Button variant="redblue" className="px-8 py-3 text-lg">
             Get Free Marketing Audit
           </Button>
         </div>

@@ -19,7 +19,7 @@ const buttonVariants = cva(
           "bg-gray-800 text-white hover:bg-gray-700",
         ghost: "hover:bg-gray-800 hover:text-white text-white",
         link: "text-white underline-offset-4 hover:underline",
-        rgb: "rgb-gradient-border bg-black text-white hover:scale-105 transition-transform",
+        redblue: "border-2 border-red-500 hover:border-blue-500 bg-transparent text-white transition-colors",
       },
       size: {
         default: "h-10 px-4 py-2",

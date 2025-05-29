@@ -24,7 +24,7 @@ const ServicesSection = () => {
       description: "Comprehensive digital marketing strategies to grow your online presence.",
       features: ["SEO/SEM", "Social Media", "Content Marketing", "Analytics"],
       icon: "📈",
-      href: "/services/digital-marketing"
+      href: "/products/startup/digital-marketing"
     },
     {
       title: "UI/UX Design",
@@ -50,9 +50,9 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section id="services" className="py-20 bg-black">
+    <section id="services" className="py-20 bg-black scroll-animate">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 animate-fade-in">
+        <div className="text-center mb-16 scroll-animate">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             <span className="text-white">Our </span>
             <span className="gradient-text">Services</span>
@@ -67,8 +67,7 @@ const ServicesSection = () => {
           {services.map((service, index) => (
             <div 
               key={index}
-              className="group bg-gray-900 p-8 rounded-xl border border-gray-800 hover:border-white transition-all duration-300 hover:transform hover:-translate-y-1 animate-scale-in card-hover"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="group bg-gray-900 p-8 rounded-xl border border-gray-800 hover:border-white transition-all duration-300 hover:transform hover:-translate-y-1 scroll-animate card-hover"
             >
               <div className="text-4xl mb-4">{service.icon}</div>
               <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-white transition-colors">
@@ -87,7 +86,7 @@ const ServicesSection = () => {
               </ul>
               <Link to={service.href}>
                 <Button 
-                  variant="rgb" 
+                  variant="redblue" 
                   className="w-full"
                 >
                   Learn More
@@ -97,10 +96,10 @@ const ServicesSection = () => {
           ))}
         </div>
 
-        <div className="text-center mt-16 animate-fade-in">
+        <div className="text-center mt-16 scroll-animate">
           <Link to="/services">
             <Button 
-              variant="rgb"
+              variant="redblue"
               size="lg"
               className="px-8 py-3"
             >
