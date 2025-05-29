@@ -28,13 +28,6 @@ const Navbar = () => {
     { label: "Market Research", href: "/products/startup/market-research" }
   ];
 
-  const inverseSystemItems = [
-    { label: "System Overview", href: "/products/inverse-system/overview" },
-    { label: "Analytics Dashboard", href: "/products/inverse-system/analytics" },
-    { label: "Data Management", href: "/products/inverse-system/data-management" },
-    { label: "Reporting Tools", href: "/products/inverse-system/reporting" }
-  ];
-
   const businessGrowthItems = [
     { label: "SEO Services", href: "/products/growth/seo-services" },
     { label: "Social Media Growth", href: "/products/growth/social-media" },
@@ -109,14 +102,14 @@ const Navbar = () => {
                 </DropdownMenuContent>
               </DropdownMenu>
               
-              {/* Founders Workspace Dropdown */}
+              {/* Products Dropdown with Sub-menus */}
               <DropdownMenu>
                 <DropdownMenuTrigger className="text-white hover:text-gray-300 transition-colors flex items-center space-x-1">
-                  <span>Founders Workspace</span>
+                  <span>Products</span>
                   <ChevronDown className="w-4 h-4" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="dropdown-content w-64">
-                  {/* New Startup Solutions Sub-menu */}
+                  {/* New Startup Sub-menu */}
                   <DropdownMenuSub>
                     <DropdownMenuSubTrigger className="text-white hover:text-gray-300 dropdown-item">
                       New Startup Solutions
@@ -132,45 +125,6 @@ const Navbar = () => {
                     </DropdownMenuSubContent>
                   </DropdownMenuSub>
 
-                  {/* Inverse System Sub-menu */}
-                  <DropdownMenuSub>
-                    <DropdownMenuSubTrigger className="text-white hover:text-gray-300 dropdown-item">
-                      Inverse System
-                    </DropdownMenuSubTrigger>
-                    <DropdownMenuSubContent className="dropdown-content">
-                      {inverseSystemItems.map((item) => (
-                        <DropdownMenuItem key={item.label} asChild className="dropdown-item">
-                          <Link to={item.href} className="text-white hover:text-gray-300">
-                            {item.label}
-                          </Link>
-                        </DropdownMenuItem>
-                      ))}
-                    </DropdownMenuSubContent>
-                  </DropdownMenuSub>
-
-                  <DropdownMenuSeparator className="bg-gray-700" />
-
-                  {/* Additional Workspace Items */}
-                  <DropdownMenuItem asChild className="dropdown-item">
-                    <Link to="/founders-workspace" className="text-white hover:text-gray-300">
-                      Workspace Overview
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem asChild className="dropdown-item">
-                    <Link to="/founders-workspace/resources" className="text-white hover:text-gray-300">
-                      Resources & Tools
-                    </Link>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-              
-              {/* Products Dropdown with Business Growth */}
-              <DropdownMenu>
-                <DropdownMenuTrigger className="text-white hover:text-gray-300 transition-colors flex items-center space-x-1">
-                  <span>Products</span>
-                  <ChevronDown className="w-4 h-4" />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="dropdown-content w-64">
                   {/* Business Growth Sub-menu */}
                   <DropdownMenuSub>
                     <DropdownMenuSubTrigger className="text-white hover:text-gray-300 dropdown-item">
@@ -256,7 +210,7 @@ const Navbar = () => {
             <div className="hidden lg:flex items-center space-x-4">
               <Button 
                 onClick={() => setShowBooking(true)}
-                variant="redblue"
+                variant="rgb"
               >
                 Book Appointment
               </Button>
@@ -284,9 +238,6 @@ const Navbar = () => {
                 <Link to="/services" className="block px-3 py-2 text-white hover:text-gray-300">
                   Services
                 </Link>
-                <Link to="/founders-workspace" className="block px-3 py-2 text-white hover:text-gray-300">
-                  Founders Workspace
-                </Link>
                 <Link to="/products" className="block px-3 py-2 text-white hover:text-gray-300">
                   Products
                 </Link>
@@ -310,7 +261,7 @@ const Navbar = () => {
                 </Link>
                 <Button 
                   onClick={() => setShowBooking(true)}
-                  variant="redblue"
+                  variant="rgb"
                   className="w-full mt-4"
                 >
                   Book Appointment

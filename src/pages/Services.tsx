@@ -162,7 +162,7 @@ const Services = () => {
                 </div>
 
                 <div className="flex gap-3">
-                  <Button variant="redblue" className="flex-1">
+                  <Button variant="rgb" className="flex-1">
                     Get Quote
                   </Button>
                   <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800">
@@ -221,7 +221,7 @@ const Services = () => {
             Let's discuss how we can help transform your business with our technology solutions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
-            <Button variant="redblue" size="lg" className="px-8 py-3">
+            <Button variant="rgb" size="lg" className="px-8 py-3">
               Get Free Consultation
             </Button>
             <Button variant="outline" size="lg" className="border-gray-600 text-gray-300 hover:bg-gray-800 px-8 py-3">

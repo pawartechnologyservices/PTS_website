@@ -203,7 +203,7 @@ const DigitalMarketingDetail = () => {
                   </div>
                 ))}
               </div>
-              <Button variant="redblue" className="mt-8">
+              <Button variant="rgb" className="mt-8">
                 Start Marketing Campaign
               </Button>
             </div>
@@ -218,7 +218,7 @@ const DigitalMarketingDetail = () => {
           <p className="text-gray-300 text-lg max-w-3xl mx-auto mb-12">
             Launch data-driven marketing campaigns that deliver measurable results and ROI.
           </p>
-          <Button variant="redblue" size="lg" className="text-lg">
+          <Button variant="rgb" size="lg" className="text-lg">
             Get Marketing Strategy
           </Button>
         </div>
