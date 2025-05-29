@@ -21,7 +21,7 @@ const Navbar = () => {
   const [showBooking, setShowBooking] = useState(false);
   const [showDemo, setShowDemo] = useState(false);
 
-  const newStartupItems = [
+  const freeStartupInsightItems = [
     { label: "Digital Marketing", href: "/products/startup/digital-marketing" },
     { label: "Business Planning", href: "/products/startup/business-planning" },
     { label: "MVP Development", href: "/products/startup/mvp-development" },
@@ -102,20 +102,20 @@ const Navbar = () => {
                 </DropdownMenuContent>
               </DropdownMenu>
               
-              {/* Products Dropdown with Sub-menus */}
+              {/* Founders Workspace Dropdown */}
               <DropdownMenu>
                 <DropdownMenuTrigger className="text-white hover:text-gray-300 transition-colors flex items-center space-x-1">
-                  <span>Products</span>
+                  <span>Founders Workspace</span>
                   <ChevronDown className="w-4 h-4" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="dropdown-content w-64">
-                  {/* New Startup Sub-menu */}
+                  {/* Free Startup Insight Sub-menu */}
                   <DropdownMenuSub>
                     <DropdownMenuSubTrigger className="text-white hover:text-gray-300 dropdown-item">
-                      New Startup Solutions
+                      Free Startup Insight
                     </DropdownMenuSubTrigger>
                     <DropdownMenuSubContent className="dropdown-content">
-                      {newStartupItems.map((item) => (
+                      {freeStartupInsightItems.map((item) => (
                         <DropdownMenuItem key={item.label} asChild className="dropdown-item">
                           <Link to={item.href} className="text-white hover:text-gray-300">
                             {item.label}
@@ -125,10 +125,10 @@ const Navbar = () => {
                     </DropdownMenuSubContent>
                   </DropdownMenuSub>
 
-                  {/* Business Growth Sub-menu */}
+                  {/* Business Growth Solution Sub-menu */}
                   <DropdownMenuSub>
                     <DropdownMenuSubTrigger className="text-white hover:text-gray-300 dropdown-item">
-                      Business Growth Solutions
+                      Business Growth Solution
                     </DropdownMenuSubTrigger>
                     <DropdownMenuSubContent className="dropdown-content">
                       {businessGrowthItems.map((item) => (
@@ -210,7 +210,7 @@ const Navbar = () => {
             <div className="hidden lg:flex items-center space-x-4">
               <Button 
                 onClick={() => setShowBooking(true)}
-                variant="rgb"
+                variant="redblue"
               >
                 Book Appointment
               </Button>
@@ -239,7 +239,7 @@ const Navbar = () => {
                   Services
                 </Link>
                 <Link to="/products" className="block px-3 py-2 text-white hover:text-gray-300">
-                  Products
+                  Founders Workspace
                 </Link>
                 <Link to="/projects" className="block px-3 py-2 text-white hover:text-gray-300">
                   Our Projects
@@ -261,7 +261,7 @@ const Navbar = () => {
                 </Link>
                 <Button 
                   onClick={() => setShowBooking(true)}
-                  variant="rgb"
+                  variant="redblue"
                   className="w-full mt-4"
                 >
                   Book Appointment
