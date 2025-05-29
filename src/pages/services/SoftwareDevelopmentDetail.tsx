@@ -1,4 +1,3 @@
-
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -201,7 +200,7 @@ const SoftwareDevelopmentDetail = () => {
                   </div>
                 ))}
               </div>
-              <Button variant="rgb" className="mt-8">
+              <Button variant="redblue" className="mt-8">
                 Start Software Project
               </Button>
             </div>
@@ -216,7 +215,7 @@ const SoftwareDevelopmentDetail = () => {
           <p className="text-gray-300 text-lg max-w-3xl mx-auto mb-12">
             Build scalable, secure, and efficient software solutions that give you a competitive edge.
           </p>
-          <Button variant="rgb" size="lg" className="text-lg">
+          <Button variant="redblue" size="lg" className="text-lg">
             Get Software Consultation
           </Button>
         </div>
