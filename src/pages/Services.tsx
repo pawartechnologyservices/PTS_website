@@ -2,6 +2,7 @@
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, ArrowUp } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Services = () => {
   const services = [
@@ -18,7 +19,8 @@ const Services = () => {
       ],
       technologies: ["React", "Next.js", "Node.js", "MongoDB", "AWS"],
       startingPrice: "₹50,000",
-      icon: "💻"
+      icon: "💻",
+      href: "/services/web-development"
     },
     {
       title: "Software Development",
@@ -33,7 +35,8 @@ const Services = () => {
       ],
       technologies: ["Python", "Java", "Docker", "Kubernetes", "PostgreSQL"],
       startingPrice: "₹1,00,000",
-      icon: "⚙️"
+      icon: "⚙️",
+      href: "/services/software-development"
     },
     {
       title: "Digital Marketing",
@@ -48,7 +51,8 @@ const Services = () => {
       ],
       technologies: ["Google Ads", "Facebook Ads", "SEMrush", "Google Analytics"],
       startingPrice: "₹25,000/month",
-      icon: "📈"
+      icon: "📈",
+      href: "/services/digital-marketing"
     },
     {
       title: "UI/UX Design",
@@ -63,7 +67,8 @@ const Services = () => {
       ],
       technologies: ["Figma", "Adobe XD", "Sketch", "InVision"],
       startingPrice: "₹30,000",
-      icon: "🎨"
+      icon: "🎨",
+      href: "/services/ui-ux-design"
     },
     {
       title: "Strategy Consulting",
@@ -78,7 +83,8 @@ const Services = () => {
       ],
       technologies: ["Business Analysis", "Process Mapping", "KPI Tracking"],
       startingPrice: "₹75,000",
-      icon: "💡"
+      icon: "💡",
+      href: "/services/strategy-consulting"
     },
     {
       title: "AI & Machine Learning",
@@ -93,7 +99,8 @@ const Services = () => {
       ],
       technologies: ["Python", "TensorFlow", "PyTorch", "OpenAI", "Azure AI"],
       startingPrice: "₹1,50,000",
-      icon: "🤖"
+      icon: "🤖",
+      href: "/services/ai-solutions"
     }
   ];
 
@@ -162,12 +169,16 @@ const Services = () => {
                 </div>
 
                 <div className="flex gap-3">
-                  <Button variant="redblue" className="flex-1">
-                    Get Quote
-                  </Button>
-                  <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800">
-                    Learn More
-                  </Button>
+                  <Link to={service.href} className="flex-1">
+                    <Button variant="redblue" className="w-full">
+                      Get Quote
+                    </Button>
+                  </Link>
+                  <Link to={service.href}>
+                    <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800">
+                      Learn More
+                    </Button>
+                  </Link>
                 </div>
               </div>
             ))}

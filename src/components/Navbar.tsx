@@ -38,10 +38,14 @@ const Navbar = () => {
   const servicesItems = [
     { label: "Web Development", href: "/services/web-development" },
     { label: "Software Development", href: "/services/software-development" },
-    { label: "Digital Marketing", href: "/services/digital-marketing" },
     { label: "UI/UX Design", href: "/services/ui-ux-design" },
     { label: "HR Services", href: "/services/hr-service" },
     { label: "AI Solutions", href: "/services/ai-solutions" }
+  ];
+
+  const digitalMarketingItems = [
+    { label: "Free Startup Solutions", href: "/services/digital-marketing#startup-solutions" },
+    { label: "Business Growth Solutions", href: "/services/digital-marketing#growth-solutions" }
   ];
 
   const caseStudyItems = [
@@ -93,6 +97,23 @@ const Navbar = () => {
                       </Link>
                     </DropdownMenuItem>
                   ))}
+                  
+                  {/* Digital Marketing Sub-menu */}
+                  <DropdownMenuSub>
+                    <DropdownMenuSubTrigger className="text-white hover:text-gray-300 dropdown-item">
+                      Digital Marketing
+                    </DropdownMenuSubTrigger>
+                    <DropdownMenuSubContent className="dropdown-content">
+                      {digitalMarketingItems.map((item) => (
+                        <DropdownMenuItem key={item.label} asChild className="dropdown-item">
+                          <Link to={item.href} className="text-white hover:text-gray-300">
+                            {item.label}
+                          </Link>
+                        </DropdownMenuItem>
+                      ))}
+                    </DropdownMenuSubContent>
+                  </DropdownMenuSub>
+
                   <DropdownMenuSeparator className="bg-gray-700" />
                   <DropdownMenuItem asChild className="dropdown-item">
                     <Link to="/services" className="text-white hover:text-gray-300 flex items-center px-4 py-2 font-semibold">
@@ -237,6 +258,9 @@ const Navbar = () => {
                 </Link>
                 <Link to="/services" className="block px-3 py-2 text-white hover:text-gray-300">
                   Services
+                </Link>
+                <Link to="/services/digital-marketing" className="block px-3 py-2 text-white hover:text-gray-300">
+                  Digital Marketing
                 </Link>
                 <Link to="/products" className="block px-3 py-2 text-white hover:text-gray-300">
                   Founders Workspace

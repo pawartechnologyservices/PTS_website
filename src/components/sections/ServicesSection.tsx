@@ -1,4 +1,3 @@
-
 import { Button } from "../ui/button";
 import { ArrowUp } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -24,7 +23,7 @@ const ServicesSection = () => {
       description: "Comprehensive digital marketing strategies to grow your online presence.",
       features: ["SEO/SEM", "Social Media", "Content Marketing", "Analytics"],
       icon: "📈",
-      href: "/products/startup/digital-marketing"
+      href: "/services/digital-marketing"
     },
     {
       title: "UI/UX Design",
