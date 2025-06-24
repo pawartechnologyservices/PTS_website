@@ -45,15 +45,12 @@ const CTASection = () => {
 
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 text-white/80">
               <div className="flex items-center space-x-2">
-                <span className="text-2xl">✅</span>
                 <span>Free Consultation</span>
               </div>
               <div className="flex items-center space-x-2">
-                <span className="text-2xl">🚀</span>
                 <span>Quick Turnaround</span>
               </div>
               <div className="flex items-center space-x-2">
-                <span className="text-2xl">💯</span>
                 <span>100% Satisfaction</span>
               </div>
             </div>

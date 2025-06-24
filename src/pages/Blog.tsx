@@ -1,110 +1,148 @@
-
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
-import { Calendar, Clock, Users } from "lucide-react";
+import { Calendar, Clock, Users, Rocket, Shield, Code, Lightbulb, Briefcase, Zap, Cpu, Lock, Globe } from "lucide-react";
+import { motion } from "framer-motion";
+import { Helmet } from "react-helmet";
 
 const Blog = () => {
   const categories = [
-    "All Posts", "Industry Insights", "How-to Tutorials", "Company Stories", 
-    "Educational", "Marketing & SEO", "Technology Trends"
+    "All Posts", "Startup Growth", "Tech Insights", "Brand Building", 
+    "Cybersecurity", "Development", "Business Strategy"
   ];
 
   const blogPosts = [
     {
-      title: "The Future of AI in Business Automation",
-      excerpt: "Explore how artificial intelligence is revolutionizing business processes and what it means for your organization's future.",
-      author: "Rajesh Pawar",
-      date: "March 15, 2024",
+      title: "From Idea to Execution: How PTS Empowers Startups",
+      excerpt: "Discover how PTS transforms raw concepts into fully functional, revenue-generating businesses through our 360° startup support solutions.",
+      author: "PTS Team",
+      date: "June 10, 2024",
       readTime: "8 min read",
-      category: "Technology Trends",
-      image: "🤖",
-      tags: ["AI", "Automation", "Business"]
+      category: "Startup Growth",
+      icon: <Rocket className="w-8 h-8 text-primary" />,
+      tags: ["Startup", "Entrepreneurship", "Business Launch"]
     },
     {
-      title: "Complete Guide to Digital Transformation",
-      excerpt: "A comprehensive roadmap for businesses looking to embrace digital transformation and modernize their operations.",
-      author: "Priya Sharma",
-      date: "March 12, 2024",
-      readTime: "12 min read",
-      category: "Educational",
-      image: "🚀",
-      tags: ["Digital Transformation", "Strategy", "Technology"]
-    },
-    {
-      title: "Building Scalable Web Applications with React",
-      excerpt: "Learn best practices for developing high-performance React applications that can handle millions of users.",
-      author: "Amit Kumar",
-      date: "March 10, 2024",
+      title: "Why Every Business Needs Managed IT Services",
+      excerpt: "Cybersecurity breaches can paralyze operations overnight. Learn why Managed IT isn't just a service—it's a necessity for modern businesses.",
+      author: "PTS Security Team",
+      date: "June 5, 2024",
       readTime: "10 min read",
-      category: "How-to Tutorials",
-      image: "⚛️",
-      tags: ["React", "Web Development", "Scalability"]
+      category: "Cybersecurity",
+      icon: <Shield className="w-8 h-8 text-primary" />,
+      tags: ["Security", "IT", "Protection"]
     },
     {
-      title: "Our Journey: From Startup to 500+ Clients",
-      excerpt: "Reflecting on our company's growth journey and the lessons learned while serving over 500 clients worldwide.",
-      author: "Sneha Patil",
-      date: "March 8, 2024",
-      readTime: "6 min read",
-      category: "Company Stories",
-      image: "🌟",
-      tags: ["Company", "Growth", "Success Story"]
+      title: "Building Brands That Win: The PTS Development Approach",
+      excerpt: "We specialize in building modern, user-first websites and apps that aren't just beautiful—they drive real business results.",
+      author: "PTS Dev Team",
+      date: "May 28, 2024",
+      readTime: "12 min read",
+      category: "Development",
+      icon: <Code className="w-8 h-8 text-primary" />,
+      tags: ["Web Dev", "Branding", "Design"]
     },
     {
-      title: "SEO Strategies That Actually Work in 2024",
-      excerpt: "Discover the most effective SEO techniques and strategies that are driving results for businesses in 2024.",
-      author: "Vikram Singh",
-      date: "March 5, 2024",
+      title: "The Complete Guide to Digital Transformation",
+      excerpt: "A comprehensive roadmap for businesses looking to embrace digital transformation and modernize their operations effectively.",
+      author: "PTS Consultants",
+      date: "May 20, 2024",
+      readTime: "15 min read",
+      category: "Business Strategy",
+      icon: <Lightbulb className="w-8 h-8 text-primary" />,
+      tags: ["Strategy", "Innovation", "Growth"]
+    },
+    {
+      title: "Legal Essentials for Tech Startups",
+      excerpt: "Navigating the complex legal landscape of technology businesses - what every founder needs to know from day one.",
+      author: "PTS Legal Team",
+      date: "May 15, 2024",
       readTime: "9 min read",
-      category: "Marketing & SEO",
-      image: "📈",
-      tags: ["SEO", "Marketing", "Strategy"]
+      category: "Startup Growth",
+      icon: <Briefcase className="w-8 h-8 text-primary" />,
+      tags: ["Legal", "Compliance", "Startup"]
     },
     {
-      title: "Cybersecurity Best Practices for SMEs",
-      excerpt: "Essential cybersecurity measures every small and medium enterprise should implement to protect their business.",
-      author: "Anita Desai",
-      date: "March 3, 2024",
+      title: "Creating a Winning Brand Identity",
+      excerpt: "Your brand is more than a logo - it's your company's personality. Learn how to craft an identity that resonates with your audience.",
+      author: "PTS Design Team",
+      date: "May 10, 2024",
       readTime: "7 min read",
-      category: "Industry Insights",
-      image: "🛡️",
-      tags: ["Cybersecurity", "SME", "Best Practices"]
+      category: "Brand Building",
+      icon: <Globe className="w-8 h-8 text-primary" />,
+      tags: ["Branding", "Design", "Marketing"]
     }
   ];
 
   const featuredPost = blogPosts[0];
   const regularPosts = blogPosts.slice(1);
 
+  // Animation variants
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+  };
+
   return (
     <Layout>
+      <Helmet>
+        <title>PTS Blog | Insights on Startups, Tech & Business Growth</title>
+        <meta name="description" content="Expert insights on startup growth, technology trends, cybersecurity, and digital transformation from the PTS team." />
+      </Helmet>
+
       {/* Hero Section */}
-      <section className="pt-24 pb-20 gradient-bg">
+      <section className="pt-24 pb-20 bg-gradient-to-r from-blue-900 to-purple-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white animate-fade-in">
-            Our <span className="gradient-text">Blog</span>
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-200 max-w-4xl mx-auto animate-fade-in animation-delay-200">
-            Insights, tutorials, and stories from the world of technology. Stay updated with the latest 
-            trends and best practices in digital innovation.
-          </p>
+          <motion.h1 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-5xl md:text-6xl font-bold mb-6 text-white"
+          >
+            PTS <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">Blog</span>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="text-xl md:text-2xl text-gray-200 max-w-4xl mx-auto"
+          >
+            Expert knowledge on startup growth, technology trends, and business strategy.
+            Learn from our team's experience helping hundreds of businesses succeed.
+          </motion.p>
         </div>
       </section>
 
       {/* Categories Filter */}
       <section className="py-12 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap gap-4 justify-center">
+          <motion.div 
+            variants={container}
+            initial="hidden"
+            animate="show"
+            className="flex flex-wrap gap-4 justify-center"
+          >
             {categories.map((category, index) => (
-              <Button 
-                key={index}
-                variant={index === 0 ? "default" : "outline"}
-                className={index === 0 ? "bg-primary" : "border-gray-600 text-gray-300 hover:bg-gray-800"}
-                size="sm"
-              >
-                {category}
-              </Button>
+              <motion.div key={index} variants={item}>
+                <Button 
+                  variant={index === 0 ? "default" : "outline"}
+                  className={index === 0 ? "bg-primary" : "border-gray-600 text-gray-300 hover:bg-gray-800"}
+                  size="sm"
+                >
+                  {category}
+                </Button>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -112,13 +150,28 @@ const Blog = () => {
       <section className="py-20 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">Featured Article</h2>
+            <motion.h2 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-3xl font-bold text-white mb-8 text-center"
+            >
+              Featured Article
+            </motion.h2>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center animate-fade-in">
-            <div>
-              <div className="text-6xl mb-6">{featuredPost.image}</div>
-              <span className="text-primary font-semibold text-sm">{featuredPost.category}</span>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="flex items-center gap-2 mb-4">
+                {featuredPost.icon}
+                <span className="text-primary font-semibold text-sm">{featuredPost.category}</span>
+              </div>
               <h3 className="text-3xl font-bold text-white mb-4 mt-2">{featuredPost.title}</h3>
               <p className="text-gray-300 text-lg mb-6 leading-relaxed">{featuredPost.excerpt}</p>
               
@@ -148,19 +201,23 @@ const Blog = () => {
               <Button className="bg-primary hover:bg-primary/90 text-white">
                 Read Full Article
               </Button>
-            </div>
+            </motion.div>
 
-            <div className="bg-gray-900 p-8 rounded-2xl border border-gray-800">
-              <div className="aspect-video bg-gray-800 rounded-lg flex items-center justify-center text-6xl mb-6">
-                {featuredPost.image}
-              </div>
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-gray-900 p-8 rounded-2xl border border-gray-800 flex flex-col items-center justify-center h-full"
+            >
+              <div className="text-8xl mb-6">{featuredPost.emoji}</div>
               <div className="text-center">
-                <h4 className="text-white font-semibold mb-2">Latest Insights</h4>
+                <h4 className="text-white font-semibold mb-2">Startup Success Guide</h4>
                 <p className="text-gray-400 text-sm">
-                  Stay ahead with our expert insights on technology trends and business innovation.
+                  Get our free checklist for launching your startup successfully
                 </p>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -169,23 +226,41 @@ const Blog = () => {
       <section className="py-20 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">Latest Articles</h2>
+            <motion.h2 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-3xl font-bold text-white mb-8 text-center"
+            >
+              Latest Articles
+            </motion.h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.div 
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
             {regularPosts.map((post, index) => (
-              <article 
+              <motion.article 
                 key={index}
-                className="bg-black rounded-2xl border border-gray-800 hover:border-primary transition-colors overflow-hidden group animate-scale-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                variants={item}
+                className="bg-black rounded-2xl border border-gray-800 hover:border-primary transition-colors overflow-hidden group"
+                whileHover={{ y: -5 }}
               >
-                <div className="aspect-video bg-gray-800 flex items-center justify-center text-4xl">
-                  {post.image}
+                <div className="aspect-video bg-gray-800 flex items-center justify-center text-6xl">
+                  {post.emoji}
                 </div>
                 
                 <div className="p-6">
-                  <span className="text-primary font-semibold text-sm">{post.category}</span>
-                  <h3 className="text-xl font-bold text-white mb-3 mt-2 group-hover:text-primary transition-colors">
+                  <div className="flex items-center gap-2 mb-3">
+                    {post.icon}
+                    <span className="text-primary font-semibold text-xs">{post.category}</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors">
                     {post.title}
                   </h3>
                   <p className="text-gray-300 mb-4 leading-relaxed">{post.excerpt}</p>
@@ -213,33 +288,49 @@ const Blog = () => {
                     ))}
                   </div>
 
-                  <Button variant="outline" className="w-full border-gray-600 text-gray-300 hover:bg-gray-800">
+                  <Button variant="outline" className="w-full border-gray-600 text-gray-300 hover:bg-gray-800 group-hover:border-primary">
                     Read More
                   </Button>
                 </div>
-              </article>
+              </motion.article>
             ))}
-          </div>
+          </motion.div>
 
-          <div className="text-center mt-12">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="text-center mt-12"
+          >
             <Button size="lg" className="bg-primary hover:bg-primary/90 text-white">
               Load More Articles
             </Button>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Newsletter Subscription */}
       <section className="py-20 bg-black">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="bg-gray-900 p-12 rounded-2xl border border-gray-800">
-            <h2 className="text-4xl font-bold text-white mb-6 animate-fade-in">
-              Stay Updated with Our Newsletter
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="bg-gray-900 p-12 rounded-2xl border border-gray-800 relative overflow-hidden"
+          >
+            <div className="absolute -top-20 -right-20 w-40 h-40 bg-blue-500/20 rounded-full filter blur-3xl"></div>
+            <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-purple-500/20 rounded-full filter blur-3xl"></div>
+            
+            <div className="text-6xl mb-6"></div>
+            <h2 className="text-4xl font-bold text-white mb-6 relative z-10">
+              Stay Updated with Our Insights
             </h2>
-            <p className="text-xl text-gray-300 mb-8 animate-fade-in">
-              Get the latest insights, tutorials, and industry trends delivered directly to your inbox.
+            <p className="text-xl text-gray-300 mb-8 relative z-10">
+              Get the latest on startups, technology, and business growth delivered to your inbox.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto animate-fade-in">
+            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto relative z-10">
               <input 
                 type="email" 
                 placeholder="Enter your email"
@@ -249,10 +340,10 @@ const Blog = () => {
                 Subscribe
               </Button>
             </div>
-            <p className="text-gray-400 text-sm mt-4">
+            <p className="text-gray-400 text-sm mt-4 relative z-10">
               No spam. Unsubscribe at any time.
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
     </Layout>

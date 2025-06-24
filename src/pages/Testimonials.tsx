@@ -1,4 +1,3 @@
-
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Play, Quote } from "lucide-react";
@@ -6,96 +5,98 @@ import { Play, Quote } from "lucide-react";
 const Testimonials = () => {
   const clientTestimonials = [
     {
-      name: "Sarah Johnson",
-      company: "TechCorp Inc.",
-      position: "CEO",
-      feedback: "Pawar Technology completely transformed our business operations. Their LMS solution helped us train over 2,000 employees efficiently, resulting in 40% improvement in productivity. The team's expertise and dedication exceeded our expectations.",
-      rating: 5,
-      image: "👩‍💼",
-      projectType: "LMS Implementation",
-      videoAvailable: true
+      name: "Shubh Interior",
+      company: "Interior Design Company",
+      feedback: "PTS transformed our manual operations into a fully digital system. The custom billing software they provided has saved us hours every week, and the professional website has elevated our brand image. Their support team is always available and understands our business deeply. Highly recommended!",
+      services: "Website, Billing Software, Business Automation"
     },
     {
-      name: "Michael Chen",
-      company: "StartupXYZ",
-      position: "Founder & CTO",
-      feedback: "Working with Pawar Tech was a game-changer for our startup. They built our entire web platform from scratch and helped us scale to 100,000+ users. The quality of code and attention to detail is exceptional.",
-      rating: 5,
-      image: "👨‍💻",
-      projectType: "Web Development",
-      videoAvailable: false
+      name: "Maschery Resort & Villa",
+      company: "Hospitality & Tourism",
+      feedback: "Thanks to PTS, we now manage our bookings, staff, and finances all in one ERP system. It's seamless, intuitive, and customized to our needs. Their end-to-end support from planning to execution has helped us focus on delivering top-notch guest experiences.",
+      services: "ERP, Booking System, End-to-End Automation"
     },
     {
-      name: "Emily Rodriguez",
-      company: "EduLearn",
-      position: "Product Manager",
-      feedback: "Outstanding development team! They delivered our educational platform on time and within budget. The user experience is incredible, and our student engagement has increased by 75%. Highly recommended!",
-      rating: 5,
-      image: "👩‍🔬",
-      projectType: "Educational Platform",
-      videoAvailable: true
+      name: "Dealight Property Consultant",
+      company: "Real Estate Services",
+      feedback: "Before working with PTS, lead tracking and follow-ups were a nightmare. With the customized CRM and automation tools, we've seen a 40% increase in our response rate and better conversions. The team also helped us with digital branding. Excellent service from a visionary tech partner!",
+      services: "CRM, Website, Lead Management System"
     },
     {
-      name: "David Thompson",
-      company: "RetailPlus",
-      position: "Operations Manager",
-      feedback: "The ERP system they built for us streamlined all our processes. We achieved ROI within 6 months and saw 30% reduction in operational costs. The real-time reporting features are fantastic.",
-      rating: 5,
-      image: "👨‍💼",
-      projectType: "ERP System",
-      videoAvailable: false
+      name: "Vista Bella Realty",
+      company: "Real Estate Firm",
+      feedback: "We needed a modern, scalable platform to showcase our projects. PTS delivered a beautiful, functional website integrated with a sales dashboard that helps our agents stay organized and efficient. The team is proactive and always ahead of the curve.",
+      services: "Website, Property Listing Platform, Sales Dashboard"
     },
     {
-      name: "Dr. Priya Patel",
-      company: "MedCare Systems",
-      position: "Chief Medical Officer",
-      feedback: "The healthcare management system they developed has revolutionized our patient care. We can now serve 300% more patients with the same resources. The AI-powered insights are incredibly valuable.",
-      rating: 5,
-      image: "👩‍⚕️",
-      projectType: "Healthcare Software",
-      videoAvailable: true
+      name: "SK Enterprises",
+      company: "Security Services Provider",
+      feedback: "PTS built an ERP system tailored to manage our guards, attendance, payroll, and billing. It's the backbone of our operations now. The professionalism and after-support from their team are truly impressive.",
+      services: "ERP, HRM Module, Billing Software"
     },
     {
-      name: "Arjun Singh",
-      company: "FoodieDelight",
-      position: "Marketing Director",
-      feedback: "Their digital marketing expertise transformed our online presence. We saw 400% increase in online orders and 250% growth in social media engagement. The ROI has been phenomenal.",
-      rating: 5,
-      image: "👨‍🍳",
-      projectType: "Digital Marketing",
-      videoAvailable: false
+      name: "Al-Burrakh Technology",
+      company: "IT Solutions Company",
+      feedback: "As a tech company, we needed a partner who understands scalability and structure. PTS gave us strategic support in product planning, lead funnels, and building a conversion-focused website. It's more than just development – it's real business consulting.",
+      services: "Business Support, Lead Management, Website"
+    },
+    {
+      name: "Zarinova Entertainment",
+      company: "Events & Media",
+      feedback: "Managing bookings, artist schedules, and client follow-ups was messy – until we got PTS onboard. Their team built a smart solution tailored to our needs. Now, everything is organized, and our brand looks stunning online!",
+      services: "Booking Platform, CRM, Website"
+    },
+    {
+      name: "Al-Burrakh Fashion",
+      company: "Fashion E-Commerce",
+      feedback: "PTS helped us launch a complete e-commerce store with integrated ERP and billing modules. Inventory, orders, customer communication – everything works like a charm. Their UI/UX team did a brilliant job capturing the essence of our fashion brand.",
+      services: "E-Commerce Platform, ERP, Billing"
     }
   ];
 
-  const internTestimonials = [
+  const lmsTestimonials = [
     {
-      name: "Rahul Sharma",
-      role: "Full Stack Developer Intern",
-      feedback: "My internship at Pawar Technology was incredible. I learned React, Node.js, and worked on real client projects. The mentorship was outstanding.",
-      image: "👨‍💻",
-      duration: "6 months"
+      name: "EliteSpace Interiors",
+      feedback: "PTS's LMS made training our interior design team seamless. The interactive courses and progress tracking helped us maintain quality and speed up project delivery."
     },
     {
-      name: "Ananya Gupta",
-      role: "UI/UX Design Intern",
-      feedback: "Amazing learning experience! I worked on actual client designs and learned industry-standard tools. Got placed at a top design agency after completion.",
-      image: "👩‍🎨",
-      duration: "4 months"
+      name: "Horizon Realty Group",
+      feedback: "With the LMS, our sales staff and agents stay updated on market trends and compliance. It's user-friendly and helped improve overall team productivity."
     },
     {
-      name: "Karthik Reddy",
-      role: "Digital Marketing Intern",
-      feedback: "Hands-on experience with real campaigns. Learned SEO, social media marketing, and analytics. The team treated me like a full-time employee.",
-      image: "👨‍💼",
-      duration: "3 months"
+      name: "SecureWay Solutions",
+      feedback: "Training security personnel across multiple locations was always tough. PTS LMS's mobile-friendly modules and auto-certifications solved this perfectly."
     }
   ];
 
-  const placementSuccess = [
-    { name: "Raj Patel", company: "Google", role: "Software Engineer", package: "₹35 LPA", image: "👨‍💻" },
-    { name: "Sneha Joshi", company: "Microsoft", role: "Product Manager", package: "₹28 LPA", image: "👩‍💼" },
-    { name: "Vikram Kumar", company: "Amazon", role: "DevOps Engineer", package: "₹32 LPA", image: "👨‍🔧" },
-    { name: "Pooja Sharma", company: "Flipkart", role: "UI/UX Designer", package: "₹18 LPA", image: "👩‍🎨" }
+  const erpTestimonials = [
+    {
+      name: "Seaside Retreat Resorts",
+      feedback: "PTS developed a custom ERP that streamlined room bookings, inventory, and staff schedules. It improved our operational efficiency and reduced errors."
+    },
+    {
+      name: "Landmark Property Advisors",
+      feedback: "Our ERP system from PTS helps track leads, client documents, and payments all in one place. It's tailored exactly for our real estate needs."
+    },
+    {
+      name: "UrbanStyle Fashion Co.",
+      feedback: "From product management to order fulfillment, the ERP has enabled us to scale quickly without increasing overhead. Inventory accuracy has improved drastically."
+    }
+  ];
+
+  const billingTestimonials = [
+    {
+      name: "TechVibe Solutions",
+      feedback: "The billing software from PTS simplified invoicing across all projects, automating GST calculations and improving cash flow management."
+    },
+    {
+      name: "Nova Interiors",
+      feedback: "Stage-wise billing is crucial for us. PTS's billing system allows clear milestone invoicing and gives clients transparent updates on payments."
+    },
+    {
+      name: "SparkWave Events",
+      feedback: "Managing multiple event billing cycles and vendor payments was a mess earlier. Now everything's organized, automated, and hassle-free thanks to PTS."
+    }
   ];
 
   return (
@@ -107,8 +108,7 @@ const Testimonials = () => {
             What Our <span className="gradient-text">Clients Say</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-200 max-w-4xl mx-auto animate-fade-in animation-delay-200">
-            Don't just take our word for it. Here's what our satisfied clients, interns, 
-            and placement candidates have to say about working with us.
+            Real businesses. Real results. Here's what our valued clients say about working with Pawar Technology Services.
           </p>
         </div>
       </section>
@@ -119,10 +119,10 @@ const Testimonials = () => {
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl font-bold mb-6">
               <span className="gradient-text">Client</span>
-              <span className="text-white"> Success Stories</span>
+              <span className="text-white"> Testimonials</span>
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Real feedback from businesses we've helped transform with our technology solutions.
+              Feedback from businesses we've helped transform with our technology solutions.
             </p>
           </div>
 
@@ -134,68 +134,47 @@ const Testimonials = () => {
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 <div className="flex items-start justify-between mb-6">
-                  <div className="flex items-center">
-                    <div className="text-4xl mr-4">{testimonial.image}</div>
-                    <div>
-                      <h3 className="text-white font-bold text-lg">{testimonial.name}</h3>
-                      <p className="text-primary font-semibold">{testimonial.position}</p>
-                      <p className="text-gray-400 text-sm">{testimonial.company}</p>
-                    </div>
+                  <div>
+                    <h3 className="text-white font-bold text-lg">{testimonial.name}</h3>
+                    <p className="text-primary font-semibold">{testimonial.company}</p>
+                    <p className="text-gray-400 text-sm mt-1">Services: {testimonial.services}</p>
                   </div>
-                  {testimonial.videoAvailable && (
-                    <Button size="sm" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white">
-                      <Play className="w-4 h-4 mr-2" />
-                      Video
-                    </Button>
-                  )}
                 </div>
 
                 <Quote className="w-8 h-8 text-primary mb-4" />
                 <blockquote className="text-gray-300 text-lg leading-relaxed mb-6">
                   "{testimonial.feedback}"
                 </blockquote>
-
-                <div className="flex justify-between items-center">
-                  <div className="flex items-center">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <span key={i} className="text-yellow-400 text-xl">★</span>
-                    ))}
-                  </div>
-                  <span className="text-primary font-semibold text-sm">{testimonial.projectType}</span>
-                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Intern Testimonials */}
+      {/* LMS Testimonials */}
       <section className="py-20 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl font-bold mb-6">
-              <span className="text-white">Intern </span>
-              <span className="gradient-text">Experiences</span>
+              <span className="text-white">Lead Management </span>
+              <span className="gradient-text">System</span>
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Hear from our interns about their learning journey and growth experience with us.
+              What our clients say about our LMS solutions.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {internTestimonials.map((intern, index) => (
+            {lmsTestimonials.map((testimonial, index) => (
               <div 
                 key={index}
-                className="bg-black p-8 rounded-2xl border border-gray-800 hover:border-primary transition-colors text-center animate-scale-in"
+                className="bg-black p-8 rounded-2xl border border-gray-800 hover:border-primary transition-colors animate-scale-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="text-5xl mb-4">{intern.image}</div>
-                <h3 className="text-white font-bold text-lg mb-2">{intern.name}</h3>
-                <p className="text-primary font-semibold mb-2">{intern.role}</p>
-                <p className="text-gray-400 text-sm mb-4">Duration: {intern.duration}</p>
+                <h3 className="text-white font-bold text-lg mb-2">{testimonial.name}</h3>
                 <Quote className="w-6 h-6 text-primary mx-auto mb-4" />
                 <blockquote className="text-gray-300 leading-relaxed">
-                  "{intern.feedback}"
+                  "{testimonial.feedback}"
                 </blockquote>
               </div>
             ))}
@@ -203,65 +182,62 @@ const Testimonials = () => {
         </div>
       </section>
 
-      {/* Placement Success */}
+      {/* ERP Testimonials */}
       <section className="py-20 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl font-bold mb-6">
-              <span className="gradient-text">Placement</span>
-              <span className="text-white"> Success Stories</span>
+              <span className="gradient-text">ERP</span>
+              <span className="text-white"> Solutions</span>
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Our mentees are now working at top tech companies worldwide.
+              Client experiences with our Enterprise Resource Planning systems.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {placementSuccess.map((placement, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {erpTestimonials.map((testimonial, index) => (
               <div 
                 key={index}
-                className="bg-gray-900 p-6 rounded-2xl border border-gray-800 hover:border-primary transition-colors text-center animate-scale-in"
+                className="bg-gray-900 p-8 rounded-2xl border border-gray-800 hover:border-primary transition-colors animate-scale-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="text-4xl mb-4">{placement.image}</div>
-                <h3 className="text-white font-bold mb-2">{placement.name}</h3>
-                <p className="text-primary font-semibold mb-1">{placement.role}</p>
-                <p className="text-gray-400 text-sm mb-2">{placement.company}</p>
-                <div className="text-green-500 font-bold text-lg">{placement.package}</div>
+                <h3 className="text-white font-bold text-lg mb-2">{testimonial.name}</h3>
+                <Quote className="w-6 h-6 text-primary mx-auto mb-4" />
+                <blockquote className="text-gray-300 leading-relaxed">
+                  "{testimonial.feedback}"
+                </blockquote>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Video Testimonials Section */}
+      {/* Billing Software Testimonials */}
       <section className="py-20 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-4xl font-bold mb-6">
-              <span className="text-white">Video </span>
-              <span className="gradient-text">Testimonials</span>
+              <span className="text-white">Billing </span>
+              <span className="gradient-text">Software</span>
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Watch our clients share their success stories in their own words.
+              Client feedback on our custom billing solutions.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3].map((video, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {billingTestimonials.map((testimonial, index) => (
               <div 
                 key={index}
-                className="bg-black rounded-2xl border border-gray-800 hover:border-primary transition-colors overflow-hidden group animate-scale-in"
+                className="bg-black p-8 rounded-2xl border border-gray-800 hover:border-primary transition-colors animate-scale-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="aspect-video bg-gray-800 flex items-center justify-center relative cursor-pointer group-hover:bg-gray-700 transition-colors">
-                  <Play className="w-16 h-16 text-primary" />
-                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-white font-bold mb-2">Client Success Story #{video}</h3>
-                  <p className="text-gray-400 text-sm">How we helped transform their business operations</p>
-                </div>
+                <h3 className="text-white font-bold text-lg mb-2">{testimonial.name}</h3>
+                <Quote className="w-6 h-6 text-primary mx-auto mb-4" />
+                <blockquote className="text-gray-300 leading-relaxed">
+                  "{testimonial.feedback}"
+                </blockquote>
               </div>
             ))}
           </div>

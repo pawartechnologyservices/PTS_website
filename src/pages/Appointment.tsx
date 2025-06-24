@@ -28,6 +28,7 @@ const Appointment = () => {
 
   const services = [
     "Web Development",
+    "Lead-Sales-Generation",
     "Software Development",
     "Digital Marketing",
     "UI/UX Design",

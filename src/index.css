@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  caret-color: transparent; 
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -422,4 +426,9 @@ html {
 @keyframes blink {
   from, to { border-color: transparent; }
   50% { border-color: white; }
+}
+
+:root {
+  --x-pos: 0.5;
+  --y-pos: 0.5;
 }

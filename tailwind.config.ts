@@ -2,6 +2,8 @@
 import type { Config } from "tailwindcss";
 
 export default {
+	
+
 	darkMode: ["class"],
 	content: [
 		"./pages/**/*.{ts,tsx}",
@@ -69,6 +71,7 @@ export default {
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
 			},
+			
 			fontFamily: {
 				sans: ['Inter', 'system-ui', 'sans-serif'],
 			},

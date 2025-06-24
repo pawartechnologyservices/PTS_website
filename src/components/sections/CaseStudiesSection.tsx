@@ -1,114 +1,143 @@
-
+import { motion } from 'framer-motion';
 import { Button } from "../ui/button";
-import { ArrowUp } from "lucide-react";
+import { ArrowUpRight, Rocket, Shield, Code } from "lucide-react";
+import { Link } from 'react-router-dom';
 
 const CaseStudiesSection = () => {
-  const caseStudies = [
+  const blogPosts = [
     {
-      title: "E-commerce Platform Transformation",
-      client: "RetailPro Inc.",
-      industry: "E-commerce",
-      problem: "Legacy system with poor performance and user experience",
-      solution: "Modern React-based platform with microservices architecture", 
-      technology: ["React", "Node.js", "MongoDB", "AWS"],
-      results: ["300% increase in conversion rate", "50% reduction in load time", "40% increase in user engagement"],
-      image: "🛒"
+      title: "From Idea to Execution: How PTS Empowers Startups",
+      excerpt: "Discover how PTS transforms raw concepts into fully functional, revenue-generating businesses through our 360° startup support solutions.",
+      author: "PTS Team",
+      date: "June 10, 2024",
+      readTime: "8 min read",
+      category: "Startup Growth",
+      icon: <Rocket className="w-8 h-8 text-primary" />,
+      emoji: "🚀",
+      tags: ["Startup", "Entrepreneurship", "Business Launch"],
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
     },
     {
-      title: "Educational Platform Development",
-      client: "EduTech Solutions",
-      industry: "Education",
-      problem: "Need for comprehensive online learning management system",
-      solution: "Custom LMS with video streaming and progress tracking",
-      technology: ["Vue.js", "Python", "PostgreSQL", "Docker"],
-      results: ["10,000+ active students", "95% user satisfaction", "60% cost reduction"],
-      image: "📚"
+      title: "Why Every Business Needs Managed IT Services",
+      excerpt: "Cybersecurity breaches can paralyze operations overnight. Learn why Managed IT isn't just a service—it's a necessity for modern businesses.",
+      author: "PTS Security Team",
+      date: "June 5, 2024",
+      readTime: "10 min read",
+      category: "Cybersecurity",
+      icon: <Shield className="w-8 h-8 text-primary" />,
+      emoji: "🛡️",
+      tags: ["Security", "IT", "Protection"],
+      image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
     },
     {
-      title: "Healthcare Data Analytics",
-      client: "MedCare Systems", 
-      industry: "Healthcare",
-      problem: "Inefficient patient data management and reporting",
-      solution: "AI-powered analytics dashboard with real-time insights",
-      technology: ["React", "Python", "TensorFlow", "Azure"],
-      results: ["70% faster diagnosis", "30% cost savings", "Improved patient outcomes"],
-      image: "🏥"
-    }
+      title: "Building Brands That Win: The PTS Development Approach",
+      excerpt: "We specialize in building modern, user-first websites and apps that aren't just beautiful—they drive real business results.",
+      author: "PTS Dev Team",
+      date: "May 28, 2024",
+      readTime: "12 min read",
+      category: "Development",
+      icon: <Code className="w-8 h-8 text-primary" />,
+      emoji: "💻",
+      tags: ["Web Dev", "Branding", "Design"],
+      image: "https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+    },
   ];
 
   return (
-    <section className="py-20 bg-black">
+    <section className="py-12 md:py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="gradient-text">Case</span>
-            <span className="text-white"> Studies</span>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">
+            Latest <span className="text-black">Blog's</span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Real success stories showcasing how we've helped businesses achieve 
-            their digital transformation goals.
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Discover our latest articles and case studies on technology, business growth, and innovation.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="space-y-12">
-          {caseStudies.map((study, index) => (
-            <div 
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {blogPosts.map((post, index) => (
+            <motion.div
               key={index}
-              className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center animate-fade-in"
-              style={{ animationDelay: `${index * 0.2}s` }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100"
             >
-              <div className={`${index % 2 === 1 ? 'lg:order-2' : ''}`}>
-                <div className="text-6xl mb-4">{study.image}</div>
-                <div className="text-primary font-semibold mb-2">{study.industry}</div>
-                <h3 className="text-3xl font-bold text-white mb-4">{study.title}</h3>
-                <p className="text-gray-300 mb-6">{study.client}</p>
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src={post.image} 
+                  alt={post.title}
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                />
+             
+              </div>
+              
+              <div className="p-6">
+                <div className="flex items-center mb-3">
+                  <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
+                    {post.category}
+                  </span>
+                  <span className="text-gray-500 text-sm ml-2">• {post.readTime}</span>
+                </div>
                 
-                <div className="space-y-4">
-                  <div>
-                    <h4 className="text-white font-semibold mb-2">Challenge</h4>
-                    <p className="text-gray-400">{study.problem}</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{post.title}</h3>
+                <p className="text-gray-600 mb-4">{post.excerpt}</p>
+                
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {post.tags.map((tag, idx) => (
+                    <span key={idx} className="bg-gray-100 text-gray-800 text-xs px-2.5 py-0.5 rounded-full">
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+                
+                <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                  <div className="flex items-center">
+                    <div className="bg-blue-100 rounded-full p-2 mr-3">
+                      {post.icon}
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-gray-900">{post.author}</p>
+                      <p className="text-xs text-gray-500">{post.date}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="text-white font-semibold mb-2">Solution</h4>
-                    <p className="text-gray-400">{study.solution}</p>
-                  </div>
+                  <Link to={`/blog`}>
+                    <Button variant="ghost" className="text-black hover:text-white">
+                      Read more
+                      <ArrowUpRight className="w-4 h-4 ml-1" />
+                    </Button>
+                  </Link>
                 </div>
               </div>
-
-              <div className={`${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                <div className="bg-gray-900 p-8 rounded-xl border border-gray-800">
-                  <h4 className="text-white font-semibold mb-4">Technologies Used</h4>
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {study.technology.map((tech, idx) => (
-                      <span key={idx} className="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  
-                  <h4 className="text-white font-semibold mb-4">Results</h4>
-                  <div className="space-y-2">
-                    {study.results.map((result, idx) => (
-                      <div key={idx} className="flex items-center text-gray-300">
-                        <ArrowUp className="w-4 h-4 text-green-500 mr-2 rotate-45" />
-                        {result}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
-        <div className="text-center mt-16 animate-fade-in">
-          <Button 
-            size="lg"
-            className="bg-primary hover:bg-primary/90 text-white px-8 py-3"
-          >
-            View All Case Studies
-          </Button>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="text-center mt-12"
+        >
+          <Link to="/blog">
+            <Button 
+              size="lg"
+              className="bg-white hover:bg-white text-black px-8 py-3 group"
+            >
+              View All Articles
+              <ArrowUpRight className="w-4 h-4 ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            </Button>
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

@@ -151,10 +151,10 @@ const AboutCharts = () => {
         {/* Success Metrics */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mt-12">
           {[
-            { metric: "750+", label: "Successful Projects", icon: "🚀" },
-            { metric: "500+", label: "Happy Clients", icon: "😊" },
-            { metric: "98%", label: "Success Rate", icon: "📈" },
-            { metric: "15+", label: "Countries Served", icon: "🌍" }
+            { metric: "750+", label: "Successful Projects" },
+            { metric: "500+", label: "Happy Clients" },
+            { metric: "98%", label: "Success Rate"},
+            { metric: "15+", label: "Countries Served" }
           ].map((item, index) => (
             <Card key={index} className="bg-black border-gray-800 text-center animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
               <CardContent className="p-6">

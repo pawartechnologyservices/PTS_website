@@ -1,151 +1,219 @@
+import React, { useState } from 'react';
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Star, Building, BookOpen, Settings, CreditCard, Play, Users
+} from 'lucide-react';
+import { Badge } from "@/components/ui/badge";
 
-import { useState } from "react";
-import { Button } from "../ui/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+// Import logo images
+import Logo1 from '/image/brand/10.jpg';
+import Logo2 from '/image/brand/1.jpg';
+import Logo3 from '/image/brand/4.jpg';
+import Logo4 from '/image/brand/2.jpg';
+import Logo5 from '/image/brand/11.png';
+import Logo6 from '/image/brand/2.jpg';
 
-const TestimonialsSection = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+interface Testimonial {
+  id: number;
+  company: string;
+  industry: string;
+  services: string[];
+  testimonial: string;
+  category: string;
+  rating: number;
+  highlight: string;
+  date: string;
+  logo: string;
+}
 
-  const testimonials = [
+const ClientTestimonials = () => {
+  const testimonials: Testimonial[] = [
     {
-      name: "Sarah Johnson",
-      company: "TechCorp Inc.",
-      position: "CEO",
-      feedback: "Pawar Technology transformed our business with their innovative solutions. The team's expertise and dedication exceeded our expectations.",
+      id: 1,
+      company: "Shubh Interior",
+      industry: "Interior Design",
+      services: ["Website", "Business Automation"],
+      testimonial: "PTS transformed our manual operations into a fully digital system...",
+      category: "website",
       rating: 5,
-      image: "👩‍💼"
+      highlight: "saved us hours every week",
+      date: "2023-05-15",
+      logo: Logo1
     },
     {
-      name: "Michael Chen",
-      company: "StartupXYZ",
-      position: "Founder",
-      feedback: "Working with Pawar Tech was a game-changer. Their LMS solution helped us scale our training programs efficiently.",
+      id: 2,
+      company: "Dealight Property Consultant",
+      industry: "Real Estate Services",
+      services: ["CRM", "Website"],
+      testimonial: "Before working with PTS, lead tracking and follow-ups were a nightmare...",
+      category: "website",
       rating: 5,
-      image: "👨‍💻"
+      highlight: "40% increase in our response rate",
+      date: "2023-07-10",
+      logo: Logo2
     },
     {
-      name: "Emily Rodriguez",
-      company: "EduLearn",
-      position: "CTO",
-      feedback: "Outstanding development team! They delivered our project on time and within budget. Highly recommended.",
+      id: 3,
+      company: "Vista Bella Realty",
+      industry: "Real Estate Firm",
+      services: ["Website", "Property Listing Platform", "Sales Dashboard"],
+      testimonial: "We needed a modern, scalable platform to showcase our projects...",
+      category: "website",
       rating: 5,
-      image: "👩‍🔬"
+      highlight: "beautiful, functional website",
+      date: "2023-08-05",
+      logo: Logo3
     },
     {
-      name: "David Thompson",
-      company: "RetailPlus",
-      position: "Operations Manager",
-      feedback: "The ERP system they built for us streamlined all our processes. ROI was achieved within 6 months.",
+      id: 4,
+      company: "Al-Burrakh Technology",
+      industry: "IT Solutions Company",
+      services: ["Business Support", "Website"],
+      testimonial: "As a tech company, we needed a partner who understands scalability...",
+      category: "website",
       rating: 5,
-      image: "👨‍💼"
+      highlight: "real business consulting",
+      date: "2023-10-18",
+      logo: Logo4
+    },
+    {
+      id: 5,
+      company: "Zarinova Entertainment",
+      industry: "Events & Media",
+      services: ["Booking Platform", "Website"],
+      testimonial: "Managing bookings, artist schedules, and client follow-ups was messy...",
+      category: "website",
+      rating: 5,
+      highlight: "everything is organized",
+      date: "2023-11-03",
+      logo: Logo5
+    },
+    {
+      id: 6,
+      company: "Al-Burrakh Fashion",
+      industry: "Fashion E-Commerce",
+      services: ["E-Commerce Platform"],
+      testimonial: "PTS helped us launch a complete e-commerce store...",
+      category: "website",
+      rating: 5,
+      highlight: "everything works like a charm",
+      date: "2023-12-09",
+      logo: Logo6
     }
   ];
 
-  const nextTestimonial = () => {
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+  const RatingStars = ({ rating }: { rating: number }) => (
+    <div className="flex">
+      {[...Array(5)].map((_, i) => (
+        <Star
+          key={i}
+          className={`h-4 w-4 ${i < rating ? 'fill-amber-500 text-amber-500' : 'text-gray-500'}`}
+        />
+      ))}
+    </div>
+  );
+
+  const getServiceIcon = (service: string) => {
+    const iconMap: Record<string, JSX.Element> = {
+      website: <Building className="h-3 w-3 text-white" />,
+      lms: <BookOpen className="h-3 w-3 text-white" />,
+      erp: <Settings className="h-3 w-3 text-white" />,
+      billing: <CreditCard className="h-3 w-3 text-white" />,
+      automation: <Play className="h-3 w-3 text-white" />,
+      crm: <Users className="h-3 w-3 text-white" />
+    };
+    const key = service.toLowerCase().replace(/\s+/g, '');
+    return iconMap[key] || <Users className="h-3 w-3 text-white" />;
   };
 
-  const prevTestimonial = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  };
-
-  return (
-    <section className="py-20 bg-gray-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="text-white">What Our </span>
-            <span className="gradient-text">Clients Say</span>
-          </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Don't just take our word for it. Here's what our satisfied clients 
-            have to say about working with us.
-          </p>
+  const TestimonialCard = ({ testimonial }: { testimonial: Testimonial }) => (
+    <Card className="border border-gray-800 bg-gray-900 shadow-lg h-full">
+      <CardContent className="p-6 h-full flex flex-col">
+        <div className="mb-4">
+          <RatingStars rating={testimonial.rating} />
         </div>
 
-        <div className="relative max-w-4xl mx-auto">
-          {/* Main testimonial */}
-          <div className="bg-black p-8 md:p-12 rounded-2xl border border-gray-800 text-center animate-scale-in">
-            <div className="text-6xl mb-6">{testimonials[currentIndex].image}</div>
-            
-            {/* Star rating */}
-            <div className="flex justify-center mb-6">
-              {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                <span key={i} className="text-yellow-400 text-2xl">★</span>
-              ))}
-            </div>
+        <div className="flex flex-wrap gap-2 mb-4">
+          {testimonial.services.map((service, index) => (
+            <Badge
+              key={index}
+              variant="outline"
+              className="border-gray-700 bg-gray-800 text-white text-xs"
+            >
+              {getServiceIcon(service)}
+              <span className="ml-1">{service}</span>
+            </Badge>
+          ))}
+        </div>
 
-            <blockquote className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-              "{testimonials[currentIndex].feedback}"
-            </blockquote>
+        <blockquote className="text-gray-300 mb-6 italic flex-grow">
+          "{testimonial.testimonial}"
+        </blockquote>
 
-            <div>
-              <h4 className="text-white font-bold text-lg mb-1">
-                {testimonials[currentIndex].name}
-              </h4>
-              <p className="text-primary font-semibold">
-                {testimonials[currentIndex].position}
-              </p>
-              <p className="text-gray-400">
-                {testimonials[currentIndex].company}
-              </p>
-            </div>
+        <div className="flex items-start mt-6">
+          <img
+            src={testimonial.logo}
+            alt={testimonial.company}
+            className="w-10 h-10 rounded-full object-contain bg-white p-1 mr-3 border-2 border-amber-500"
+          />
+          <div>
+            <div className="text-sm font-semibold text-white">{testimonial.company}</div>
+            <div className="text-xs text-gray-400">{testimonial.industry}</div>
           </div>
+        </div>
 
-          {/* Navigation buttons */}
-          <Button
-            onClick={prevTestimonial}
-            size="icon"
-            variant="outline"
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 border-gray-600 text-gray-300 hover:bg-gray-800"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </Button>
-          
-          <Button
-            onClick={nextTestimonial}
-            size="icon"
-            variant="outline"
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 border-gray-600 text-gray-300 hover:bg-gray-800"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </Button>
+        <div className="mt-4 pt-4 border-t border-gray-800 flex justify-between items-center">
+          <span className="text-xs text-gray-500">{testimonial.date}</span>
+          <Badge variant="outline" className="border-gray-700 bg-gray-800 text-gray-300 text-xs">
+            {testimonial.category}
+          </Badge>
+        </div>
+      </CardContent>
+    </Card>
+  );
 
-          {/* Dots indicator */}
-          <div className="flex justify-center mt-8 space-x-2">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`w-3 h-3 rounded-full transition-colors ${
-                  index === currentIndex ? 'bg-primary' : 'bg-gray-600'
-                }`}
-              />
+  const topTestimonials = testimonials.slice(0, 5);
+
+  return (
+    <div className="bg-black py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-3xl font-bold text-center text-white mb-12">
+          What Our Clients Say
+        </h2>
+
+        <div className="relative overflow-hidden mb-8">
+          <div className="marquee-right-to-left flex space-x-6 py-2">
+            {[...topTestimonials, ...topTestimonials].map((testimonial, index) => (
+              <div key={`top-${index}`} className="flex-shrink-0 w-80 md:w-96">
+                <TestimonialCard testimonial={testimonial} />
+              </div>
             ))}
           </div>
         </div>
-
-        {/* Additional testimonials grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
-          {testimonials.map((testimonial, index) => (
-            <div 
-              key={index}
-              className={`bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-primary transition-colors cursor-pointer animate-fade-in ${
-                index === currentIndex ? 'border-primary' : ''
-              }`}
-              style={{ animationDelay: `${index * 0.1}s` }}
-              onClick={() => setCurrentIndex(index)}
-            >
-              <div className="text-3xl mb-3">{testimonial.image}</div>
-              <h4 className="text-white font-semibold mb-1">{testimonial.name}</h4>
-              <p className="text-primary text-sm mb-2">{testimonial.position}</p>
-              <p className="text-gray-400 text-sm">{testimonial.company}</p>
-            </div>
-          ))}
-        </div>
       </div>
-    </section>
+
+      <style jsx>{`
+        .marquee-right-to-left {
+          animation: scrollRightToLeft 30s linear infinite;
+          display: flex;
+          width: calc(200%);
+        }
+        @keyframes scrollRightToLeft {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(calc(-50% - 1.5rem));
+          }
+        }
+        @media (max-width: 768px) {
+          .marquee-right-to-left {
+            animation-duration: 20s;
+          }
+        }
+      `}</style>
+    </div>
   );
 };
 
-export default TestimonialsSection;
+export default ClientTestimonials;

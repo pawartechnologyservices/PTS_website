@@ -1,44 +1,41 @@
-
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Linkedin, Twitter, Instagram, Facebook, Youtube } from "lucide-react";
 
 const Contact = () => {
   const contactInfo = [
     {
       icon: MapPin,
       title: "Office Address",
-      details: ["Pawar Technology Hub", "Andheri East, Mumbai", "Maharashtra 400069, India"]
+      details: ["Office No A1002 Boulevard Towers,", "Sadhu Vaswani Chowk, Camp,", "Pune, Maharashtra 411001, India"]
     },
     {
       icon: Phone,
       title: "Phone Numbers",
-      details: ["+91 98765 43210", "+91 98765 43211", "Toll Free: 1800-123-4567"]
+      details: ["+91 909-664-9556"]
     },
     {
       icon: Mail,
       title: "Email Addresses",
-      details: ["info@pawartech.com", "sales@pawartech.com", "support@pawartech.com"]
+      details: ["pawartechnologyservices@gmail.com"]
     },
     {
       icon: Clock,
       title: "Business Hours",
-      details: ["Monday - Friday: 9:00 AM - 6:00 PM", "Saturday: 10:00 AM - 4:00 PM", "Sunday: Closed"]
+      details: ["Monday - Friday: 9:30 AM - 6:30 PM", "Saturday/Sunday: Closed"]
     }
   ];
 
   const socialLinks = [
-    { name: "LinkedIn", icon: "💼", url: "#" },
-    { name: "Twitter", icon: "🐦", url: "#" },
-    { name: "Instagram", icon: "📸", url: "#" },
-    { name: "Facebook", icon: "📘", url: "#" },
-    { name: "YouTube", icon: "📺", url: "#" }
+    { name: "LinkedIn", icon: Linkedin, url: "#" },
+    { name: "Instagram", icon: Instagram, url: "https://www.instagram.com/pawartechnologyservices?igsh=dnV2cjY3ZWxvOGl2" },
+    { name: "Facebook", icon: Facebook, url: "#" },
   ];
 
-  return (
+  return ( 
     <Layout>
       {/* Hero Section */}
       <section className="pt-24 pb-20 gradient-bg">
@@ -170,10 +167,9 @@ const Contact = () => {
                         key={index}
                         href={social.url}
                         className="flex items-center justify-center w-12 h-12 bg-gray-800 rounded-lg hover:bg-primary transition-colors group"
+                        aria-label={social.name}
                       >
-                        <span className="text-2xl group-hover:scale-110 transition-transform">
-                          {social.icon}
-                        </span>
+                        <social.icon className="w-5 h-5 text-gray-300 group-hover:text-white group-hover:scale-110 transition-transform" />
                       </a>
                     ))}
                   </div>
@@ -193,7 +189,7 @@ const Contact = () => {
               <span className="gradient-text">Office</span>
             </h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Located in the heart of Mumbai's tech hub, our office is easily accessible 
+              Located in the heart of Pune City, our office is easily accessible 
               and equipped with modern facilities.
             </p>
           </div>
@@ -205,9 +201,12 @@ const Contact = () => {
                 <MapPin className="w-16 h-16 text-primary mx-auto mb-4" />
                 <h3 className="text-white text-xl font-semibold mb-2">Interactive Map</h3>
                 <p className="text-gray-400">
-                  Pawar Technology Hub, Andheri East, Mumbai
+                  Office No A1002 Boulevard Towers, Sadhu Vaswani Chowk, Camp, Pune, Maharashtra 411001
                 </p>
-                <Button className="mt-4 bg-primary hover:bg-primary/90 text-white">
+                <Button 
+                  className="mt-4 bg-primary hover:bg-primary/90 text-white"
+                  onClick={() => window.open('https://maps.app.goo.gl/ZVvNZZYkSjCVRXkq9', '_blank')}
+                >
                   Open in Google Maps
                 </Button>
               </div>
@@ -283,7 +282,7 @@ const Contact = () => {
               size="lg" 
               variant="outline" 
               className="border-white text-white hover:bg-white hover:text-primary px-8 py-3"
-              onClick={() => window.open('https://wa.me/919876543210', '_blank')}
+              onClick={() => window.open('https://wa.me/919096649556', '_blank')}
             >
               WhatsApp Us
             </Button>

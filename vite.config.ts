@@ -5,14 +5,18 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  appType: "spa", // 👈 this is key for production fallback to index.html
   server: {
     host: "::",
     port: 8080,
   },
+  preview: {
+    port: 5000,
+    strictPort: true,
+  },
   plugins: [
     react(),
-    mode === 'development' &&
-    componentTagger(),
+    mode === 'development' && componentTagger(),
   ].filter(Boolean),
   resolve: {
     alias: {
