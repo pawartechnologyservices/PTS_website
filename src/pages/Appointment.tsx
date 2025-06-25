@@ -1,4 +1,3 @@
-
 import Layout from "@/components/Layout";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -50,8 +49,10 @@ const Appointment = () => {
   ];
 
   const timeSlots = [
-    "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM",
-    "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM"
+    "9:00 AM", "9:30 AM", "10:00 AM", "10:30 AM", 
+    "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM",
+    "2:00 PM", "2:30 PM", "3:00 PM", "3:30 PM", 
+    "4:00 PM", "4:30 PM", "5:00 PM", "5:30 PM"
   ];
 
   const benefits = [
@@ -187,7 +188,13 @@ const Appointment = () => {
                       </SelectTrigger>
                       <SelectContent className="bg-gray-800 border-gray-700 text-white">
                         {services.map((service) => (
-                          <SelectItem key={service} value={service}>{service}</SelectItem>
+                          <SelectItem 
+                            key={service} 
+                            value={service}
+                            className="hover:bg-gray-700 focus:bg-gray-700"
+                          >
+                            {service}
+                          </SelectItem>
                         ))}
                       </SelectContent>
                     </Select>
@@ -201,7 +208,13 @@ const Appointment = () => {
                       </SelectTrigger>
                       <SelectContent className="bg-gray-800 border-gray-700 text-white">
                         {departments.map((dept) => (
-                          <SelectItem key={dept} value={dept}>{dept}</SelectItem>
+                          <SelectItem 
+                            key={dept} 
+                            value={dept}
+                            className="hover:bg-gray-700 focus:bg-gray-700"
+                          >
+                            {dept}
+                          </SelectItem>
                         ))}
                       </SelectContent>
                     </Select>
@@ -241,10 +254,22 @@ const Appointment = () => {
                         <SelectTrigger className="bg-gray-800 border-gray-700 text-white mt-2">
                           <SelectValue placeholder="Select time" />
                         </SelectTrigger>
-                        <SelectContent className="bg-gray-800 border-gray-700 text-white">
-                          {timeSlots.map((time) => (
-                            <SelectItem key={time} value={time}>{time}</SelectItem>
-                          ))}
+                        <SelectContent className="bg-gray-900 border-gray-700 text-white">
+                          <div className="max-h-60 overflow-y-auto custom-scrollbar">
+                            <div className="grid grid-cols-2 gap-1 p-2">
+                              {timeSlots.map((time) => (
+                                <SelectItem 
+                                  key={time} 
+                                  value={time}
+                                  className="hover:bg-gray-800 focus:bg-gray-800 rounded-md m-1"
+                                >
+                                  <div className="flex items-center justify-center p-2">
+                                    <span className="text-primary-foreground">{time}</span>
+                                  </div>
+                                </SelectItem>
+                              ))}
+                            </div>
+                          </div>
                         </SelectContent>
                       </Select>
                     </div>
@@ -393,6 +418,23 @@ const Appointment = () => {
           </div>
         </div>
       </section>
+
+      {/* Custom CSS for the time picker */}
+      <style jsx global>{`
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: #1f2937;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: #4b5563;
+          border-radius: 3px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: #6b7280;
+        }
+      `}</style>
     </Layout>
   );
 };
