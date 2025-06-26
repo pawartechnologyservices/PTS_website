@@ -1,11 +1,26 @@
+import { useState } from "react";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Phone, Mail, Clock, Linkedin, Twitter, Instagram, Facebook, Youtube } from "lucide-react";
+import { ref, push } from "firebase/database";
+import { database } from "@/lib/firebase";
+import toast from "react-hot-toast";
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    company: "",
+    subject: "",
+    message: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const contactInfo = [
     {
       icon: MapPin,
@@ -35,6 +50,63 @@ const Contact = () => {
     { name: "Facebook", icon: Facebook, url: "#" },
   ];
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      // Prepare the contact data
+      const contactData = {
+        ...formData,
+        createdAt: new Date().toISOString(),
+        status: "new"
+      };
+
+      // Push data to Firebase Realtime Database
+      const contactsRef = ref(database, 'contacts');
+      await push(contactsRef, contactData);
+
+      // Show success message
+      toast.success("Message sent successfully!", {
+        position: "bottom-center",
+        style: {
+          background: "#10B981",
+          color: "#fff",
+        },
+      });
+
+      // Reset form
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        company: "",
+        subject: "",
+        message: ""
+      });
+    } catch (error) {
+      console.error("Error submitting contact form:", error);
+      toast.error("Failed to send message. Please try again.", {
+        position: "bottom-center",
+        style: {
+          background: "#EF4444",
+          color: "#fff",
+        },
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return ( 
     <Layout>
       {/* Hero Section */}
@@ -58,7 +130,7 @@ const Contact = () => {
             <div className="animate-slide-in-left">
               <div className="bg-gray-900 p-8 rounded-2xl border border-gray-800">
                 <h2 className="text-3xl font-bold text-white mb-8">Send Us a Message</h2>
-                <form className="space-y-6">
+                <form className="space-y-6" onSubmit={handleSubmit}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <Label htmlFor="firstName" className="text-white">First Name</Label>
@@ -67,6 +139,9 @@ const Contact = () => {
                         type="text"
                         className="bg-gray-800 border-gray-700 text-white mt-2"
                         placeholder="Enter your first name"
+                        value={formData.firstName}
+                        onChange={handleInputChange}
+                        required
                       />
                     </div>
                     <div>
@@ -76,6 +151,9 @@ const Contact = () => {
                         type="text"
                         className="bg-gray-800 border-gray-700 text-white mt-2"
                         placeholder="Enter your last name"
+                        value={formData.lastName}
+                        onChange={handleInputChange}
+                        required
                       />
                     </div>
                   </div>
@@ -87,6 +165,9 @@ const Contact = () => {
                       type="email"
                       className="bg-gray-800 border-gray-700 text-white mt-2"
                       placeholder="Enter your email address"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
                     />
                   </div>
 
@@ -97,6 +178,9 @@ const Contact = () => {
                       type="tel"
                       className="bg-gray-800 border-gray-700 text-white mt-2"
                       placeholder="Enter your phone number"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      required
                     />
                   </div>
 
@@ -107,6 +191,8 @@ const Contact = () => {
                       type="text"
                       className="bg-gray-800 border-gray-700 text-white mt-2"
                       placeholder="Enter your company name"
+                      value={formData.company}
+                      onChange={handleInputChange}
                     />
                   </div>
 
@@ -117,6 +203,9 @@ const Contact = () => {
                       type="text"
                       className="bg-gray-800 border-gray-700 text-white mt-2"
                       placeholder="What can we help you with?"
+                      value={formData.subject}
+                      onChange={handleInputChange}
+                      required
                     />
                   </div>
 
@@ -126,11 +215,26 @@ const Contact = () => {
                       id="message"
                       className="bg-gray-800 border-gray-700 text-white mt-2 min-h-[120px]"
                       placeholder="Tell us more about your project requirements..."
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      required
                     />
                   </div>
 
-                  <Button className="w-full bg-primary hover:bg-primary/90 text-white">
-                    Send Message
+                  <Button 
+                    type="submit" 
+                    className="w-full bg-primary hover:bg-primary/90 text-white"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Sending...
+                      </>
+                    ) : "Send Message"}
                   </Button>
                 </form>
               </div>
@@ -168,6 +272,8 @@ const Contact = () => {
                         href={social.url}
                         className="flex items-center justify-center w-12 h-12 bg-gray-800 rounded-lg hover:bg-primary transition-colors group"
                         aria-label={social.name}
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
                         <social.icon className="w-5 h-5 text-gray-300 group-hover:text-white group-hover:scale-110 transition-transform" />
                       </a>

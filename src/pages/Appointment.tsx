@@ -255,7 +255,10 @@ const Appointment = () => {
                           <SelectValue placeholder="Select time" />
                         </SelectTrigger>
                         <SelectContent className="bg-gray-900 border-gray-700 text-white">
-                          <div className="max-h-60 overflow-y-auto custom-scrollbar">
+                          <div className="max-h-60 overflow-y-auto" style={{
+                            scrollbarWidth: 'thin',
+                            scrollbarColor: '#4b5563 #1f2937',
+                          }}>
                             <div className="grid grid-cols-2 gap-1 p-2">
                               {timeSlots.map((time) => (
                                 <SelectItem 
@@ -418,23 +421,6 @@ const Appointment = () => {
           </div>
         </div>
       </section>
-
-      {/* Custom CSS for the time picker */}
-      <style jsx global>{`
-        .custom-scrollbar::-webkit-scrollbar {
-          width: 6px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: #1f2937;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: #4b5563;
-          border-radius: 3px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: #6b7280;
-        }
-      `}</style>
     </Layout>
   );
 };

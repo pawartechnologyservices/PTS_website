@@ -10,6 +10,8 @@ import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { CalendarIcon, Clock, User, Mail, Phone, MessageSquare, ChevronDown, CheckCircle } from "lucide-react";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
+import { ref, push } from "firebase/database";
+import { database } from "@/lib/firebase";
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -56,22 +58,42 @@ const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setIsSuccess(true);
+    
+    try {
+      // Prepare the booking data
+      const bookingData = {
+        ...formData,
+        date: date ? format(date, "PPP") : "",
+        time,
+        createdAt: new Date().toISOString(),
+        status: "pending"
+      };
 
-    console.log("Booking submission:", { ...formData, date, time });
+      // Push data to Firebase Realtime Database
+      const bookingsRef = ref(database, 'bookings');
+      await push(bookingsRef, bookingData);
 
-    setTimeout(() => {
-      setFormData({
-        name: "", email: "", phone: "", service: "", department: "", message: "", company: "", attendees: "1", meetingType: "",
-      });
-      setDate(undefined);
-      setTime("09:00 AM");
-      setStep(1);
-      setIsSuccess(false);
-      onClose();
-    }, 3000);
+      setIsSubmitting(false);
+      setIsSuccess(true);
+
+      console.log("Booking submitted successfully:", bookingData);
+
+      // Reset form after 3 seconds
+      setTimeout(() => {
+        setFormData({
+          name: "", email: "", phone: "", service: "", department: "", message: "", company: "", attendees: "1", meetingType: "",
+        });
+        setDate(undefined);
+        setTime("09:00 AM");
+        setStep(1);
+        setIsSuccess(false);
+        onClose();
+      }, 3000);
+    } catch (error) {
+      console.error("Error submitting booking:", error);
+      setIsSubmitting(false);
+      // You might want to show an error message to the user here
+    }
   };
 
   const nextStep = () => setStep(step + 1);
