@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import BookingModal from "../BookingModal";
-import img from "/image/Cover-Image.png";
+import img from "/image/Cover-Image.jpg";
 
 const HeroSection = () => {
   const [showBooking, setShowBooking] = useState(false);
