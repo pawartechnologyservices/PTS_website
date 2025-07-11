@@ -1,45 +1,45 @@
 import { motion } from 'framer-motion';
 import { Button } from "../ui/button";
-import { ArrowUpRight, Rocket, Shield, Code } from "lucide-react";
+import { ArrowUpRight, Rocket, Users, PieChart } from "lucide-react";
 import { Link } from 'react-router-dom';
 
 const CaseStudiesSection = () => {
   const blogPosts = [
     {
-      title: "From Idea to Execution: How PTS Empowers Startups",
-      excerpt: "Discover how PTS transforms raw concepts into fully functional, revenue-generating businesses through our 360° startup support solutions.",
+      title: "Introducing Founders Workspace - Your All-in-One Business Platform",
+      excerpt: "Discover how Founders Workspace helps entrepreneurs manage operations, clients, sales, and billing from one powerful dashboard.",
       author: "PTS Team",
-      date: "June 10, 2024",
-      readTime: "8 min read",
-      category: "Startup Growth",
+      date: "July 1, 2025",
+      readTime: "5 min read",
+      category: "Business Platform",
       icon: <Rocket className="w-8 h-8 text-primary" />,
       emoji: "🚀",
-      tags: ["Startup", "Entrepreneurship", "Business Launch"],
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+      tags: ["Startup", "CRM", "Productivity"],
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
     },
     {
-      title: "Why Every Business Needs Managed IT Services",
-      excerpt: "Cybersecurity breaches can paralyze operations overnight. Learn why Managed IT isn't just a service—it's a necessity for modern businesses.",
-      author: "PTS Security Team",
-      date: "June 5, 2024",
-      readTime: "10 min read",
-      category: "Cybersecurity",
-      icon: <Shield className="w-8 h-8 text-primary" />,
-      emoji: "🛡️",
-      tags: ["Security", "IT", "Protection"],
-      image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+      title: "Why Your Business Needs an All-in-One Solution",
+      excerpt: "Learn how Founders Workspace eliminates scattered spreadsheets and disconnected tools with its integrated CRM, ERP and billing system.",
+      author: "PTS Product Team",
+      date: "June 25, 2025",
+      readTime: "8 min read",
+      category: "Business Growth",
+      icon: <PieChart className="w-8 h-8 text-primary" />,
+      emoji: "📊",
+      tags: ["ERP", "Automation", "Efficiency"],
+      image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
     },
     {
-      title: "Building Brands That Win: The PTS Development Approach",
-      excerpt: "We specialize in building modern, user-first websites and apps that aren't just beautiful—they drive real business results.",
-      author: "PTS Dev Team",
-      date: "May 28, 2024",
-      readTime: "12 min read",
-      category: "Development",
-      icon: <Code className="w-8 h-8 text-primary" />,
-      emoji: "💻",
-      tags: ["Web Dev", "Branding", "Design"],
-      image: "https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+      title: "Streamline Your Business Operations with Founders Workspace",
+      excerpt: "See how our platform helps you manage leads, track payments, and grow your client base with smart analytics and reports.",
+      author: "PTS Solutions Team",
+      date: "June 18, 2025",
+      readTime: "6 min read",
+      category: "Operations",
+      icon: <Users className="w-8 h-8 text-primary" />,
+      emoji: "👥",
+      tags: ["Management", "Productivity", "Tools"],
+      image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
     },
   ];
 
@@ -54,10 +54,10 @@ const CaseStudiesSection = () => {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">
-            Latest <span className="text-black">Blog's</span>
+            Latest <span className="text-black">Insights</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Discover our latest articles and case studies on technology, business growth, and innovation.
+            Discover how Founders Workspace can transform your business operations and growth.
           </p>
         </motion.div>
 
@@ -77,7 +77,6 @@ const CaseStudiesSection = () => {
                   alt={post.title}
                   className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                 />
-             
               </div>
               
               <div className="p-6">

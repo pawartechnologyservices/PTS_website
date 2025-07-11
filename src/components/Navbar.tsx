@@ -63,24 +63,20 @@ const Navbar = () => {
   }, [showComingSoon]);
 
   useEffect(() => {
-    // Create an Intersection Observer to detect background color changes
     observerRef.current = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          // Get the background color of the observed element
           const bgColor = window.getComputedStyle(entry.target).backgroundColor;
-          // Check if the background is light or dark
           const isDark = isColorDark(bgColor);
           setIsDarkBackground(isDark);
         });
       },
       {
         threshold: 0.1,
-        rootMargin: "-100px 0px 0px 0px", // Observe slightly above the navbar
+        rootMargin: "-100px 0px 0px 0px",
       }
     );
 
-    // Observe the main content area
     const mainContent = document.querySelector("main") || document.body;
     if (mainContent) {
       observerRef.current.observe(mainContent);
@@ -108,23 +104,18 @@ const Navbar = () => {
 
   const handleLearnMore = (e: React.MouseEvent, href: string) => {
     e.preventDefault();
-    // Close the dropdown menu
     if (dropdownTriggerRef.current) {
       dropdownTriggerRef.current.click();
     }
-    // Navigate to the link
-    window.location.href = href;
+    window.open(href, "_blank");
   };
 
-  // Helper function to determine if a color is dark
   const isColorDark = (color: string) => {
-    // Convert rgb/rgba to hex
     const hex = color.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
     if (hex) {
       const r = parseInt(hex[1], 10);
       const g = parseInt(hex[2], 10);
       const b = parseInt(hex[3], 10);
-      // Calculate luminance
       const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
       return luminance < 0.5;
     }
@@ -132,7 +123,7 @@ const Navbar = () => {
   };
 
   /* -------------------- NAV DATA -------------------- */
-  const comingSoonSections = ["itServices", "founders"];
+  const comingSoonSections = ["itServices"];
 
   const servicesSections = [
     {
@@ -240,6 +231,13 @@ const Navbar = () => {
       ],
     },
     {
+      title: "FOUNDERS WORKSPACE",
+      key: "founders",
+      image: serviceImages.founders,
+      description: "All-in-one platform for startup founders and entrepreneurs",
+      href: "https://founder-workspace.netlify.app/",
+    },
+    {
       title: "IT SERVICES",
       key: "itServices",
       image: serviceImages.it,
@@ -280,51 +278,6 @@ const Navbar = () => {
             "Penetration Testing",
             "Security Audits",
             "Compliance",
-          ],
-        },
-      ],
-    },
-    {
-      title: "FOUNDERS WORKSPACE",
-      key: "founders",
-      image: serviceImages.founders,
-      description:
-        "Integrated solutions for startup founders and entrepreneurs",
-      items: [
-        {
-          label: "CRM System",
-          href: "#",
-          description:
-            "Custom CRM solutions to manage customer relationships and sales pipelines.",
-          features: [
-            "Lead Management",
-            "Sales Automation",
-            "Customer Support",
-            "Analytics",
-          ],
-        },
-        {
-          label: "ERP System",
-          href: "#",
-          description:
-            "Enterprise resource planning solutions tailored for growing businesses.",
-          features: [
-            "Inventory Management",
-            "Accounting",
-            "HR Modules",
-            "Reporting",
-          ],
-        },
-        {
-          label: "Billing & Invoice System",
-          href: "#",
-          description:
-            "Automated billing and invoicing systems for efficient financial operations.",
-          features: [
-            "Recurring Billing",
-            "Payment Gateways",
-            "Tax Compliance",
-            "Multi-currency",
           ],
         },
       ],
@@ -403,7 +356,7 @@ const Navbar = () => {
             transition={{ duration: 0.3 }}
             className="fixed bottom-8 left-1/2 -translate-x-1/2 bg-purple-600 text-white px-5 py-2 rounded-lg shadow-lg z-[100] flex items-center"
           >
-            Coming Soon!
+            Launching Soon!
           </motion.div>
         )}
       </AnimatePresence>
@@ -586,7 +539,16 @@ const Navbar = () => {
                                 variants={sectionVariants}
                               >
                                 <button
-                                  onClick={() => setActiveSection(section.key)}
+                                  onClick={() => {
+                                    if (section.key === "founders") {
+                                      window.open(section.href, "_blank");
+                                      if (dropdownTriggerRef.current) {
+                                        dropdownTriggerRef.current.click();
+                                      }
+                                    } else {
+                                      setActiveSection(section.key);
+                                    }
+                                  }}
                                   className={`w-full text-left p-3 rounded-lg transition-all flex items-start ${
                                     activeSection === section.key
                                       ? "bg-white shadow-md border border-gray-200 text-gray-800"
@@ -602,11 +564,11 @@ const Navbar = () => {
                                         section.key
                                       ) && (
                                         <span className="text-xs bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full">
-                                          Coming Soon
+                                          Launching Soon
                                         </span>
                                       )}
                                     </div>
-                                    {activeSection === section.key && (
+                                    {activeSection === section.key && section.key !== "founders" && (
                                       <p className="text-xs text-gray-500 mt-1 text-left">
                                         {section.description}
                                       </p>
@@ -618,166 +580,168 @@ const Navbar = () => {
                           </div>
                         </div>
 
-                        {/* Main content area */}
-                        <div className="w-3/4 overflow-y-auto relative">
-                          {/* Hero background for empty state */}
-                          {!activeSection && (
-                            <div className="absolute inset-0 bg-gradient-to-r from-gray-50 to-gray-100 z-0">
-                              <div className="absolute inset-0 bg-[url('/images/services-hero-bg.jpg')] bg-cover bg-center opacity-10"></div>
-                            </div>
-                          )}
-
-                          <div className="relative z-10 h-full p-8">
-                            {activeSection ? (
-                              <>
-                                {servicesSections
-                                  .filter((s) => s.key === activeSection)
-                                  .map((section) => (
-                                    <div
-                                      key={section.key}
-                                      className="space-y-8"
-                                    >
-                                      <div className="flex items-center gap-4 mb-6">
-                                        <div className="bg-gray-100 w-12 h-12 rounded-full flex items-center justify-center">
-                                          <span className="text-2xl"></span>
-                                        </div>
-                                        <div>
-                                          <h3 className="text-2xl font-bold text-gray-800">
-                                            {section.title}
-                                          </h3>
-                                          <p className="text-gray-600">
-                                            {section.description}
-                                          </p>
-                                        </div>
-                                      </div>
-
-                                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                                        {section.items.map((item, idx) => (
-                                          <motion.div
-                                            key={idx}
-                                            custom={idx}
-                                            initial="hidden"
-                                            animate="visible"
-                                            variants={cardVariants}
-                                            whileHover={{ y: -5 }}
-                                            className={`bg-white border rounded-xl p-5 shadow-sm hover:shadow-md transition-all ${
-                                              comingSoonSections.includes(
-                                                section.key
-                                              )
-                                                ? "opacity-90"
-                                                : ""
-                                            }`}
-                                          >
-                                            <div className="flex items-start mb-3">
-                                              <h4 className="font-semibold text-lg text-gray-800">
-                                                {item.label}
-                                              </h4>
-                                            </div>
-                                            <p className="text-sm text-gray-600 mb-4">
-                                              {item.description}
-                                            </p>
-
-                                            <div className="mb-4">
-                                              <h5 className="text-xs font-semibold text-gray-500 uppercase mb-2">
-                                                Key Features:
-                                              </h5>
-                                              <ul className="space-y-2">
-                                                {item.features.map(
-                                                  (feature, fIdx) => (
-                                                    <li
-                                                      key={fIdx}
-                                                      className="flex items-start"
-                                                    >
-                                                      <span className="text-gray-500 mr-2">
-                                                        •
-                                                      </span>
-                                                      <span className="text-xs text-gray-500">
-                                                        {feature}
-                                                      </span>
-                                                    </li>
-                                                  )
-                                                )}
-                                              </ul>
-                                            </div>
-
-                                            {comingSoonSections.includes(
-                                              section.key
-                                            ) ? (
-                                              <button
-                                                onClick={handleComingSoon}
-                                                className="w-full flex items-center justify-center gap-2 text-sm font-medium text-gray-400 bg-gray-100 px-4 py-2 rounded-lg cursor-not-allowed"
-                                              >
-                                                Coming Soon
-                                              </button>
-                                            ) : (
-                                              <a
-                                                href={item.href}
-                                                onClick={(e) =>
-                                                  handleLearnMore(e, item.href)
-                                                }
-                                                className="w-full flex items-center justify-center gap-2 text-sm font-medium text-gray-600 hover:text-gray-800 bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-lg transition-colors cursor-pointer"
-                                              >
-                                                Learn more{" "}
-                                                <ArrowRight className="w-4 h-4" />
-                                              </a>
-                                            )}
-                                          </motion.div>
-                                        ))}
-                                      </div>
-                                    </div>
-                                  ))}
-                              </>
-                            ) : (
-                              <div className="h-full flex flex-col items-center justify-center text-center">
-                                <div className="max-w-2xl">
-                                  <h3 className="text-3xl font-bold text-gray-700 mb-4">
-                                    Explore Our Services
-                                  </h3>
-                                  <p className="text-gray-500 mb-8 text-lg">
-                                    We offer comprehensive solutions to help
-                                    your business grow. Select a category to
-                                    view detailed services.
-                                  </p>
-                                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                                    {servicesSections.map((section) => (
-                                      <motion.div
-                                        key={section.key}
-                                        whileHover={{ y: -5 }}
-                                        className="cursor-pointer group"
-                                        onClick={() =>
-                                          setActiveSection(section.key)
-                                        }
-                                      >
-                                        <div className="bg-white rounded-lg p-6 border border-gray-200 group-hover:border-gray-300 transition-all h-full">
-                                          <div className="bg-gray-100 w-14 h-14 rounded-full flex items-center justify-center mb-4 mx-auto group-hover:bg-gray-200 transition-colors">
-                                            <span className="text-2xl"></span>
-                                          </div>
-                                          <h4 className="font-medium text-gray-800 mb-2">
-                                            {section.title}
-                                          </h4>
-                                          <p className="text-sm text-gray-500 mb-3">
-                                            {section.description}
-                                          </p>
-                                          {comingSoonSections.includes(
-                                            section.key
-                                          ) && (
-                                            <span className="text-xs text-orange-500">
-                                              Coming Soon
-                                            </span>
-                                          )}
-                                          <div className="mt-4 text-gray-600 flex items-center justify-center gap-1 text-sm font-medium">
-                                            View services{" "}
-                                            <ChevronRight className="w-4 h-4" />
-                                          </div>
-                                        </div>
-                                      </motion.div>
-                                    ))}
-                                  </div>
-                                </div>
+                        {/* Main content area - Only show for non-founders sections */}
+                        {activeSection && activeSection !== "founders" && (
+                          <div className="w-3/4 overflow-y-auto relative">
+                            {/* Hero background for empty state */}
+                            {!activeSection && (
+                              <div className="absolute inset-0 bg-gradient-to-r from-gray-50 to-gray-100 z-0">
+                                <div className="absolute inset-0 bg-[url('/images/services-hero-bg.jpg')] bg-cover bg-center opacity-10"></div>
                               </div>
                             )}
+
+                            <div className="relative z-10 h-full p-8">
+                              {activeSection ? (
+                                <>
+                                  {servicesSections
+                                    .filter((s) => s.key === activeSection)
+                                    .map((section) => (
+                                      <div
+                                        key={section.key}
+                                        className="space-y-8"
+                                      >
+                                        <div className="flex items-center gap-4 mb-6">
+                                          <div className="bg-gray-100 w-12 h-12 rounded-full flex items-center justify-center">
+                                            <span className="text-2xl"></span>
+                                          </div>
+                                          <div>
+                                            <h3 className="text-2xl font-bold text-gray-800">
+                                              {section.title}
+                                            </h3>
+                                            <p className="text-gray-600">
+                                              {section.description}
+                                            </p>
+                                          </div>
+                                        </div>
+
+                                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                          {section.items.map((item, idx) => (
+                                            <motion.div
+                                              key={idx}
+                                              custom={idx}
+                                              initial="hidden"
+                                              animate="visible"
+                                              variants={cardVariants}
+                                              whileHover={{ y: -5 }}
+                                              className={`bg-white border rounded-xl p-5 shadow-sm hover:shadow-md transition-all ${
+                                                comingSoonSections.includes(
+                                                  section.key
+                                                )
+                                                  ? "opacity-90"
+                                                  : ""
+                                              }`}
+                                            >
+                                              <div className="flex items-start mb-3">
+                                                <h4 className="font-semibold text-lg text-gray-800">
+                                                  {item.label}
+                                                </h4>
+                                              </div>
+                                              <p className="text-sm text-gray-600 mb-4">
+                                                {item.description}
+                                              </p>
+
+                                              <div className="mb-4">
+                                                <h5 className="text-xs font-semibold text-gray-500 uppercase mb-2">
+                                                  Key Features:
+                                                </h5>
+                                                <ul className="space-y-2">
+                                                  {item.features.map(
+                                                    (feature, fIdx) => (
+                                                      <li
+                                                        key={fIdx}
+                                                        className="flex items-start"
+                                                      >
+                                                        <span className="text-gray-500 mr-2">
+                                                          •
+                                                        </span>
+                                                        <span className="text-xs text-gray-500">
+                                                          {feature}
+                                                        </span>
+                                                      </li>
+                                                    )
+                                                  )}
+                                                </ul>
+                                              </div>
+
+                                              {comingSoonSections.includes(
+                                                section.key
+                                              ) ? (
+                                                <button
+                                                  onClick={handleComingSoon}
+                                                  className="w-full flex items-center justify-center gap-2 text-sm font-medium text-gray-400 bg-gray-100 px-4 py-2 rounded-lg cursor-not-allowed"
+                                                >
+                                                  Launching Soon
+                                                </button>
+                                              ) : (
+                                                <a
+                                                  href={item.href}
+                                                  onClick={(e) =>
+                                                    handleLearnMore(e, item.href)
+                                                  }
+                                                  className="w-full flex items-center justify-center gap-2 text-sm font-medium text-gray-600 hover:text-gray-800 bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-lg transition-colors cursor-pointer"
+                                                >
+                                                  Learn more{" "}
+                                                  <ArrowRight className="w-4 h-4" />
+                                                </a>
+                                              )}
+                                            </motion.div>
+                                          ))}
+                                        </div>
+                                      </div>
+                                    ))}
+                                </>
+                              ) : (
+                                <div className="h-full flex flex-col items-center justify-center text-center">
+                                  <div className="max-w-2xl">
+                                    <h3 className="text-3xl font-bold text-gray-700 mb-4">
+                                      Explore Our Services
+                                    </h3>
+                                    <p className="text-gray-500 mb-8 text-lg">
+                                      We offer comprehensive solutions to help
+                                      your business grow. Select a category to
+                                      view detailed services.
+                                    </p>
+                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                                      {servicesSections.map((section) => (
+                                        <motion.div
+                                          key={section.key}
+                                          whileHover={{ y: -5 }}
+                                          className="cursor-pointer group"
+                                          onClick={() =>
+                                            setActiveSection(section.key)
+                                          }
+                                        >
+                                          <div className="bg-white rounded-lg p-6 border border-gray-200 group-hover:border-gray-300 transition-all h-full">
+                                            <div className="bg-gray-100 w-14 h-14 rounded-full flex items-center justify-center mb-4 mx-auto group-hover:bg-gray-200 transition-colors">
+                                              <span className="text-2xl"></span>
+                                            </div>
+                                            <h4 className="font-medium text-gray-800 mb-2">
+                                              {section.title}
+                                            </h4>
+                                            <p className="text-sm text-gray-500 mb-3">
+                                              {section.description}
+                                            </p>
+                                            {comingSoonSections.includes(
+                                              section.key
+                                            ) && (
+                                              <span className="text-xs text-orange-500">
+                                                Launching Soon
+                                              </span>
+                                            )}
+                                            <div className="mt-4 text-gray-600 flex items-center justify-center gap-1 text-sm font-medium">
+                                              View services{" "}
+                                              <ChevronRight className="w-4 h-4" />
+                                            </div>
+                                          </div>
+                                        </motion.div>
+                                      ))}
+                                    </div>
+                                  </div>
+                                </div>
+                              )}
+                            </div>
                           </div>
-                        </div>
+                        )}
                       </motion.div>
                     </DropdownMenuContent>
                   </DropdownMenu>
@@ -964,7 +928,14 @@ const Navbar = () => {
                       {servicesSections.map((section) => (
                         <div key={section.title} className="space-y-1 mt-2">
                           <button
-                            onClick={() => toggleMobileExpand(section.key)}
+                            onClick={() => {
+                              if (section.key === "founders") {
+                                window.open(section.href, "_blank");
+                                setIsOpen(false);
+                              } else {
+                                toggleMobileExpand(section.key);
+                              }
+                            }}
                             className={`w-full flex justify-between items-center px-3 py-2 ${
                               isDarkBackground
                                 ? "text-purple-600 hover:text-purple-700 bg-gray-100"
@@ -987,19 +958,21 @@ const Navbar = () => {
                                       : "bg-orange-900 text-orange-300"
                                   }`}
                                 >
-                                  Coming Soon
+                                  Launching Soon
                                 </span>
                               )}
-                              <ChevronRight
-                                className={`w-4 h-4 transition-transform ${
-                                  mobileExpanded[section.key] ? "rotate-90" : ""
-                                }`}
-                              />
+                              {section.key !== "founders" && (
+                                <ChevronRight
+                                  className={`w-4 h-4 transition-transform ${
+                                    mobileExpanded[section.key] ? "rotate-90" : ""
+                                  }`}
+                                />
+                              )}
                             </div>
                           </button>
 
                           <AnimatePresence>
-                            {mobileExpanded[section.key] && (
+                            {mobileExpanded[section.key] && section.key !== "founders" && (
                               <motion.div
                                 initial={{ opacity: 0, height: 0 }}
                                 animate={{ opacity: 1, height: "auto" }}

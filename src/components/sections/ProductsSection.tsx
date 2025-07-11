@@ -9,7 +9,8 @@ const products = [
     features: ["Lead Tracking", "Sales Automation", "Customer Insights", "Email Integration"],
     image: "https://res.cloudinary.com/dwsrcpjv3/image/upload/v1750249063/LMS_k5r5r3.jpg",
     color: "#00d4ff",
-    tag: "AI-Powered"
+    tag: "AI-Powered",
+    link: "https://pts-crm-system.netlify.app/" // Added your CRM link here
   },
   {
     title: "Enterprise Resource Planning (ERP)",
@@ -17,6 +18,7 @@ const products = [
     features: ["Inventory Management", "Financial Reporting", "CRM Integration", "Analytics"],
     image: "https://res.cloudinary.com/dwsrcpjv3/image/upload/v1750322045/WhatsApp_Image_2025-06-18_at_17.58.48_9ecb3f99_syyzux.jpg",
     color: "#ff0080",
+    link: "https://pts-erp-systems.netlify.app/" // Placeholder link for ERP
   },
   {
     title: "Billing & Invoice System (BS)",
@@ -24,6 +26,7 @@ const products = [
     features: ["Automated Billing", "Payment Gateway", "Tax Management", "Reports"],
     image: "https://res.cloudinary.com/dwsrcpjv3/image/upload/v1750174328/Billing_n3hsu5.jpg",
     color: "#8aff00",
+    link: "https://pts-billing-system.netlify.app/" // Placeholder link for Billing
   }
 ];
 
@@ -38,6 +41,11 @@ const ProductsSection = () => {
     window.addEventListener("keydown", closeOnEsc);
     return () => window.removeEventListener("keydown", closeOnEsc);
   }, []);
+
+  const handleLaunchClick = (link: string, e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent card from closing
+    window.open(link, "_blank");
+  };
 
   return (
     <section className="relative min-h-screen bg-white overflow-hidden py-24 px-6 lg:px-20">
@@ -117,12 +125,18 @@ const ProductsSection = () => {
                     </ul>
                   </div>
                   <motion.button
-                    className="w-full py-3 text-sm font-semibold rounded-xl shadow-md cursor-not-allowed"
-                    style={{ backgroundColor: "#e0e0e0", color: "#666" }}
-                    disabled
-                    whileTap={{ scale: 0.97 }}
+                    className="w-full py-3 text-sm font-semibold rounded-xl shadow-md"
+                    style={{ 
+                      backgroundColor: product.color, 
+                      color: "white",
+                      cursor: product.link === "#" ? "not-allowed" : "pointer",
+                      opacity: product.link === "#" ? 0.7 : 1
+                    }}
+                    whileTap={{ scale: product.link === "#" ? 1 : 0.97 }}
+                    onClick={(e) => product.link !== "#" && handleLaunchClick(product.link, e)}
+                    disabled={product.link === "#"}
                   >
-                    Luanching Soon
+                    {product.link === "#" ? "Coming Soon" : "Launched"}
                   </motion.button>
                 </motion.div>
               )}

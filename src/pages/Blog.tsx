@@ -1,75 +1,68 @@
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
-import { Calendar, Clock, Users, Rocket, Shield, Code, Lightbulb, Briefcase, Zap, Cpu, Lock, Globe } from "lucide-react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet";
 
 const Blog = () => {
   const categories = [
-    "All Posts", "Startup Growth", "Tech Insights", "Brand Building", 
-    "Cybersecurity", "Development", "Business Strategy"
+    "All Posts", "Product Updates", "Business Growth", "Tech Insights", 
+    "Entrepreneurship", "Digital Transformation", "Case Studies"
   ];
 
   const blogPosts = [
     {
-      title: "From Idea to Execution: How PTS Empowers Startups",
-      excerpt: "Discover how PTS transforms raw concepts into fully functional, revenue-generating businesses through our 360° startup support solutions.",
-      author: "PTS Team",
-      date: "June 10, 2024",
+      title: "Introducing Founders Workspace: Your All-in-One Business Platform",
+      excerpt: "Discover how Founders Workspace combines CRM, ERP, and Billing into one powerful system to streamline your business operations.",
+      author: "PTS Product Team",
+      date: "July 1, 2025",
+      readTime: "6 min read",
+      category: "Product Updates",
+      tags: ["New Launch", "Business Tools", "Productivity"]
+    },
+    {
+      title: "Why Modern Businesses Need an Integrated Platform",
+      excerpt: "How Founders Workspace solves the challenges of scattered tools and manual processes for growing businesses.",
+      author: "PTS Strategy Team",
+      date: "June 25, 2025",
       readTime: "8 min read",
-      category: "Startup Growth",
-      icon: <Rocket className="w-8 h-8 text-primary" />,
-      tags: ["Startup", "Entrepreneurship", "Business Launch"]
+      category: "Business Growth",
+      tags: ["Efficiency", "Operations", "Management"]
     },
     {
-      title: "Why Every Business Needs Managed IT Services",
-      excerpt: "Cybersecurity breaches can paralyze operations overnight. Learn why Managed IT isn't just a service—it's a necessity for modern businesses.",
-      author: "PTS Security Team",
-      date: "June 5, 2024",
-      readTime: "10 min read",
-      category: "Cybersecurity",
-      icon: <Shield className="w-8 h-8 text-primary" />,
-      tags: ["Security", "IT", "Protection"]
-    },
-    {
-      title: "Building Brands That Win: The PTS Development Approach",
-      excerpt: "We specialize in building modern, user-first websites and apps that aren't just beautiful—they drive real business results.",
+      title: "Inside Founders Workspace: CRM Features Explained",
+      excerpt: "A deep dive into the CRM capabilities that help you manage leads, customers, and sales effortlessly.",
       author: "PTS Dev Team",
-      date: "May 28, 2024",
-      readTime: "12 min read",
-      category: "Development",
-      icon: <Code className="w-8 h-8 text-primary" />,
-      tags: ["Web Dev", "Branding", "Design"]
+      date: "June 20, 2025",
+      readTime: "10 min read",
+      category: "Tech Insights",
+      tags: ["CRM", "Sales", "Customer Management"]
     },
     {
-      title: "The Complete Guide to Digital Transformation",
-      excerpt: "A comprehensive roadmap for businesses looking to embrace digital transformation and modernize their operations effectively.",
+      title: "ERP for Small Businesses: How Founders Workspace Makes It Accessible",
+      excerpt: "Enterprise-grade resource planning tools now available for startups and growing businesses.",
       author: "PTS Consultants",
-      date: "May 20, 2024",
-      readTime: "15 min read",
-      category: "Business Strategy",
-      icon: <Lightbulb className="w-8 h-8 text-primary" />,
-      tags: ["Strategy", "Innovation", "Growth"]
-    },
-    {
-      title: "Legal Essentials for Tech Startups",
-      excerpt: "Navigating the complex legal landscape of technology businesses - what every founder needs to know from day one.",
-      author: "PTS Legal Team",
-      date: "May 15, 2024",
+      date: "June 15, 2025",
       readTime: "9 min read",
-      category: "Startup Growth",
-      icon: <Briefcase className="w-8 h-8 text-primary" />,
-      tags: ["Legal", "Compliance", "Startup"]
+      category: "Entrepreneurship",
+      tags: ["ERP", "Operations", "Startups"]
     },
     {
-      title: "Creating a Winning Brand Identity",
-      excerpt: "Your brand is more than a logo - it's your company's personality. Learn how to craft an identity that resonates with your audience.",
-      author: "PTS Design Team",
-      date: "May 10, 2024",
+      title: "Streamlining Your Billing Process with Founders Workspace",
+      excerpt: "How our integrated billing system saves time and reduces errors for businesses of all sizes.",
+      author: "PTS Finance Team",
+      date: "June 10, 2025",
       readTime: "7 min read",
-      category: "Brand Building",
-      icon: <Globe className="w-8 h-8 text-primary" />,
-      tags: ["Branding", "Design", "Marketing"]
+      category: "Digital Transformation",
+      tags: ["Billing", "Invoicing", "Payments"]
+    },
+    {
+      title: "Case Study: How Founders Workspace Helped a Startup Scale 3X Faster",
+      excerpt: "Real-world results from early adopters of our all-in-one business platform.",
+      author: "PTS Growth Team",
+      date: "June 5, 2025",
+      readTime: "12 min read",
+      category: "Case Studies",
+      tags: ["Success Story", "Growth", "Scaling"]
     }
   ];
 
@@ -95,8 +88,8 @@ const Blog = () => {
   return (
     <Layout>
       <Helmet>
-        <title>PTS Blog | Insights on Startups, Tech & Business Growth</title>
-        <meta name="description" content="Expert insights on startup growth, technology trends, cybersecurity, and digital transformation from the PTS team." />
+        <title>Founders Workspace Blog | Business Growth & Technology Insights</title>
+        <meta name="description" content="Learn about Founders Workspace - the all-in-one business platform by PTS, and get insights on business growth, technology, and entrepreneurship." />
       </Helmet>
 
       {/* Hero Section */}
@@ -108,7 +101,7 @@ const Blog = () => {
             transition={{ duration: 0.6 }}
             className="text-5xl md:text-6xl font-bold mb-6 text-white"
           >
-            PTS <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">Blog</span>
+            Founders <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">Workspace Blogs</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0 }}
@@ -116,8 +109,7 @@ const Blog = () => {
             transition={{ delay: 0.3, duration: 0.6 }}
             className="text-xl md:text-2xl text-gray-200 max-w-4xl mx-auto"
           >
-            Expert knowledge on startup growth, technology trends, and business strategy.
-            Learn from our team's experience helping hundreds of businesses succeed.
+            Your all-in-one business platform by PTS - combining CRM, ERP, and Billing into one powerful system.
           </motion.p>
         </div>
       </section>
@@ -169,7 +161,6 @@ const Blog = () => {
               transition={{ duration: 0.6 }}
             >
               <div className="flex items-center gap-2 mb-4">
-                {featuredPost.icon}
                 <span className="text-primary font-semibold text-sm">{featuredPost.category}</span>
               </div>
               <h3 className="text-3xl font-bold text-white mb-4 mt-2">{featuredPost.title}</h3>
@@ -177,15 +168,12 @@ const Blog = () => {
               
               <div className="flex items-center gap-6 text-gray-400 text-sm mb-6">
                 <div className="flex items-center">
-                  <Users className="w-4 h-4 mr-2" />
                   {featuredPost.author}
                 </div>
                 <div className="flex items-center">
-                  <Calendar className="w-4 h-4 mr-2" />
                   {featuredPost.date}
                 </div>
                 <div className="flex items-center">
-                  <Clock className="w-4 h-4 mr-2" />
                   {featuredPost.readTime}
                 </div>
               </div>
@@ -210,12 +198,14 @@ const Blog = () => {
               transition={{ duration: 0.6 }}
               className="bg-gray-900 p-8 rounded-2xl border border-gray-800 flex flex-col items-center justify-center h-full"
             >
-              <div className="text-8xl mb-6">{featuredPost.emoji}</div>
               <div className="text-center">
-                <h4 className="text-white font-semibold mb-2">Startup Success Guide</h4>
-                <p className="text-gray-400 text-sm">
-                  Get our free checklist for launching your startup successfully
+                <h4 className="text-white font-semibold mb-2">Founders Workspace Demo</h4>
+                <p className="text-gray-400 text-sm mb-4">
+                  See how our all-in-one platform can transform your business operations
                 </p>
+                <Button variant="outline" className="border-gray-600 text-gray-300 hover:bg-gray-800">
+                  Request Free Demo
+                </Button>
               </div>
             </motion.div>
           </div>
@@ -251,13 +241,10 @@ const Blog = () => {
                 className="bg-black rounded-2xl border border-gray-800 hover:border-primary transition-colors overflow-hidden group"
                 whileHover={{ y: -5 }}
               >
-                <div className="aspect-video bg-gray-800 flex items-center justify-center text-6xl">
-                  {post.emoji}
-                </div>
+
                 
                 <div className="p-6">
                   <div className="flex items-center gap-2 mb-3">
-                    {post.icon}
                     <span className="text-primary font-semibold text-xs">{post.category}</span>
                   </div>
                   <h3 className="text-xl font-bold text-white mb-3 group-hover:text-primary transition-colors">
@@ -267,15 +254,12 @@ const Blog = () => {
                   
                   <div className="flex items-center gap-4 text-gray-400 text-xs mb-4">
                     <div className="flex items-center">
-                      <Users className="w-3 h-3 mr-1" />
                       {post.author}
                     </div>
                     <div className="flex items-center">
-                      <Calendar className="w-3 h-3 mr-1" />
                       {post.date}
                     </div>
                     <div className="flex items-center">
-                      <Clock className="w-3 h-3 mr-1" />
                       {post.readTime}
                     </div>
                   </div>
@@ -323,12 +307,11 @@ const Blog = () => {
             <div className="absolute -top-20 -right-20 w-40 h-40 bg-blue-500/20 rounded-full filter blur-3xl"></div>
             <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-purple-500/20 rounded-full filter blur-3xl"></div>
             
-            <div className="text-6xl mb-6"></div>
             <h2 className="text-4xl font-bold text-white mb-6 relative z-10">
-              Stay Updated with Our Insights
+              Get Founders Workspace Updates
             </h2>
             <p className="text-xl text-gray-300 mb-8 relative z-10">
-              Get the latest on startups, technology, and business growth delivered to your inbox.
+              Subscribe to receive product news, business tips, and exclusive content about Founders Workspace.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto relative z-10">
               <input 
