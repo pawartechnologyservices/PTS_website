@@ -124,7 +124,6 @@ const Navbar = () => {
 
   /* -------------------- NAV DATA -------------------- */
   const comingSoonSections = ["itServices"];
-
   const servicesSections = [
     {
       title: "360° BUSINESS SOLUTIONS",
@@ -245,6 +244,18 @@ const Navbar = () => {
         "Cutting-edge technology solutions for your digital transformation",
       items: [
         {
+          label: "Cyber Security",
+          href: "/it/cybersecurity",
+          description:
+            "Robust security solutions to protect your digital assets and infrastructure.",
+          features: [
+            "Vulnerability Assessment",
+            "Penetration Testing",
+            "Security Audits",
+            "Compliance",
+          ],
+        },
+        {
           label: "Cloud Services",
           href: "#",
           description:
@@ -266,18 +277,6 @@ const Navbar = () => {
             "Infrastructure as Code",
             "Containerization",
             "Monitoring",
-          ],
-        },
-        {
-          label: "Cyber Security",
-          href: "#",
-          description:
-            "Robust security solutions to protect your digital assets and infrastructure.",
-          features: [
-            "Vulnerability Assessment",
-            "Penetration Testing",
-            "Security Audits",
-            "Compliance",
           ],
         },
       ],
@@ -568,11 +567,12 @@ const Navbar = () => {
                                         </span>
                                       )}
                                     </div>
-                                    {activeSection === section.key && section.key !== "founders" && (
-                                      <p className="text-xs text-gray-500 mt-1 text-left">
-                                        {section.description}
-                                      </p>
-                                    )}
+                                    {activeSection === section.key &&
+                                      section.key !== "founders" && (
+                                        <p className="text-xs text-gray-500 mt-1 text-left">
+                                          {section.description}
+                                        </p>
+                                      )}
                                   </div>
                                 </button>
                               </motion.div>
@@ -663,9 +663,21 @@ const Navbar = () => {
                                                 </ul>
                                               </div>
 
-                                              {comingSoonSections.includes(
-                                                section.key
-                                              ) ? (
+                                              {section.key === "itServices" && item.label === "Cyber Security" ? (
+                                                <Link
+                                                  to={item.href}
+                                                  className="w-full flex items-center justify-center gap-2 text-sm font-medium text-gray-600 hover:text-gray-800 bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-lg transition-colors cursor-pointer"
+                                                >
+                                                  Learn more <ArrowRight className="w-4 h-4" />
+                                                </Link>
+                                              ) : section.key === "itServices" ? (
+                                                <button
+                                                  onClick={handleComingSoon}
+                                                  className="w-full flex items-center justify-center gap-2 text-sm font-medium text-gray-400 bg-gray-100 px-4 py-2 rounded-lg cursor-not-allowed"
+                                                >
+                                                  Launching Soon
+                                                </button>
+                                              ) : comingSoonSections.includes(section.key) ? (
                                                 <button
                                                   onClick={handleComingSoon}
                                                   className="w-full flex items-center justify-center gap-2 text-sm font-medium text-gray-400 bg-gray-100 px-4 py-2 rounded-lg cursor-not-allowed"
@@ -673,16 +685,12 @@ const Navbar = () => {
                                                   Launching Soon
                                                 </button>
                                               ) : (
-                                                <a
-                                                  href={item.href}
-                                                  onClick={(e) =>
-                                                    handleLearnMore(e, item.href)
-                                                  }
+                                                <Link
+                                                  to={item.href}
                                                   className="w-full flex items-center justify-center gap-2 text-sm font-medium text-gray-600 hover:text-gray-800 bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-lg transition-colors cursor-pointer"
                                                 >
-                                                  Learn more{" "}
-                                                  <ArrowRight className="w-4 h-4" />
-                                                </a>
+                                                  Learn more <ArrowRight className="w-4 h-4" />
+                                                </Link>
                                               )}
                                             </motion.div>
                                           ))}
@@ -950,21 +958,24 @@ const Navbar = () => {
                               </span>
                             </div>
                             <div className="flex items-center">
-                              {comingSoonSections.includes(section.key) && (
-                                <span
-                                  className={`text-xs px-2 py-0.5 rounded-full mr-2 ${
-                                    isDarkBackground
-                                      ? "bg-orange-100 text-orange-700"
-                                      : "bg-orange-900 text-orange-300"
-                                  }`}
-                                >
-                                  Launching Soon
-                                </span>
-                              )}
+                              {comingSoonSections.includes(section.key) &&
+                                section.key === "itServices" && (
+                                  <span
+                                    className={`text-xs px-2 py-0.5 rounded-full mr-2 ${
+                                      isDarkBackground
+                                        ? "bg-orange-100 text-orange-700"
+                                        : "bg-orange-900 text-orange-300"
+                                    }`}
+                                  >
+                                    Launching Soon
+                                  </span>
+                                )}
                               {section.key !== "founders" && (
                                 <ChevronRight
                                   className={`w-4 h-4 transition-transform ${
-                                    mobileExpanded[section.key] ? "rotate-90" : ""
+                                    mobileExpanded[section.key]
+                                      ? "rotate-90"
+                                      : ""
                                   }`}
                                 />
                               )}
@@ -972,66 +983,67 @@ const Navbar = () => {
                           </button>
 
                           <AnimatePresence>
-                            {mobileExpanded[section.key] && section.key !== "founders" && (
-                              <motion.div
-                                initial={{ opacity: 0, height: 0 }}
-                                animate={{ opacity: 1, height: "auto" }}
-                                exit={{ opacity: 0, height: 0 }}
-                                transition={{ duration: 0.2 }}
-                                className="pl-2 overflow-hidden space-y-2 mt-2"
-                              >
-                                <div className="grid grid-cols-1 gap-2">
-                                  {section.items.map((link, idx) => (
-                                    <div
-                                      key={idx}
-                                      className={`rounded-lg p-3 ${
-                                        isDarkBackground
-                                          ? "bg-gray-100"
-                                          : "bg-gray-800"
-                                      }`}
-                                    >
-                                      <div className="flex items-start">
-                                        <div>
-                                          <div className="flex items-center justify-between">
-                                            <span
-                                              className={`font-medium ${
-                                                isDarkBackground
-                                                  ? "text-gray-900"
-                                                  : "text-white"
-                                              }`}
-                                            >
-                                              {link.label}
-                                            </span>
-                                            {comingSoonSections.includes(
-                                              section.key
-                                            ) && (
+                            {mobileExpanded[section.key] &&
+                              section.key !== "founders" && (
+                                <motion.div
+                                  initial={{ opacity: 0, height: 0 }}
+                                  animate={{ opacity: 1, height: "auto" }}
+                                  exit={{ opacity: 0, height: 0 }}
+                                  transition={{ duration: 0.2 }}
+                                  className="pl-2 overflow-hidden space-y-2 mt-2"
+                                >
+                                  <div className="grid grid-cols-1 gap-2">
+                                    {section.items.map((link, idx) => (
+                                      <div
+                                        key={idx}
+                                        className={`rounded-lg p-3 ${
+                                          isDarkBackground
+                                            ? "bg-gray-100"
+                                            : "bg-gray-800"
+                                        }`}
+                                      >
+                                        <div className="flex items-start">
+                                          <div>
+                                            <div className="flex items-center justify-between">
                                               <span
-                                                className={`text-xs px-2 py-0.5 rounded-full ${
+                                                className={`font-medium ${
                                                   isDarkBackground
-                                                    ? "bg-orange-100 text-orange-700"
-                                                    : "bg-orange-900 text-orange-300"
+                                                    ? "text-gray-900"
+                                                    : "text-white"
                                                 }`}
                                               >
-                                                Soon
+                                                {link.label}
                                               </span>
-                                            )}
+                                              {comingSoonSections.includes(
+                                                section.key
+                                              ) && (
+                                                <span
+                                                  className={`text-xs px-2 py-0.5 rounded-full ${
+                                                    isDarkBackground
+                                                      ? "bg-orange-100 text-orange-700"
+                                                      : "bg-orange-900 text-orange-300"
+                                                  }`}
+                                                >
+                                                  Soon
+                                                </span>
+                                              )}
+                                            </div>
+                                            <p
+                                              className={`text-xs mt-1 ${
+                                                isDarkBackground
+                                                  ? "text-gray-700"
+                                                  : "text-gray-300"
+                                              }`}
+                                            >
+                                              {link.description}
+                                            </p>
                                           </div>
-                                          <p
-                                            className={`text-xs mt-1 ${
-                                              isDarkBackground
-                                                ? "text-gray-700"
-                                                : "text-gray-300"
-                                            }`}
-                                          >
-                                            {link.description}
-                                          </p>
                                         </div>
                                       </div>
-                                    </div>
-                                  ))}
-                                </div>
-                              </motion.div>
-                            )}
+                                    ))}
+                                  </div>
+                                </motion.div>
+                              )}
                           </AnimatePresence>
                         </div>
                       ))}

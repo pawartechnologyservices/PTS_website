@@ -150,6 +150,7 @@ const App = () => (
           <Route path="/careers" element={<Layout><Careers /></Layout>} />
           <Route path="/contact" element={<Layout><Contact /></Layout>} />
           <Route path="/appointment" element={<Layout><Appointment /></Layout>} />
+          
 
           {/* Catch-All */}
           <Route path="*" element={<Layout><NotFound /></Layout>} />

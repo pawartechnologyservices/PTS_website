@@ -17,7 +17,7 @@ type EmpolMember = {
 
 export default function EmpolSection() {
   const EmpolMembers: EmpolMember[] = [
-   {
+    {
       id: 1,
       name: "Chetan Pawar",
       position: "Capital Partner",
@@ -70,16 +70,16 @@ export default function EmpolSection() {
     {
       id: 6,
       name: "Dhanashree Parale",
-      position: "Software Development Lead",
+      position: "Software Development ",
       imageSrc: "/image/Empol/11 (3).png",
       instagram: "http://linkedin.com/in/dhanashree-parale-0ba446295",
       category: "software",
     },
     {
       id: 7,
-      name: "Rayhan Shaikh",
-      position: "Software Development Manager",
-      imageSrc: "/image/Empol/11 (12).png",
+      name: "Tushar Goswami",
+      position: "Software Development Team Leader",
+      imageSrc: "/image/Empol/11 (16).jpg",
       instagram: "https://www.linkedin.com/in/rayhan-shaikh-170125221?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       category: "software",
     },
@@ -110,12 +110,11 @@ export default function EmpolSection() {
     },
     {
       id: 14,
-      name: "We're Hiring!",
-      position: "Assistant Digital Marketer",
-      imageSrc: "/image/Empol/11 (14).jpg",
-      instagram: "#",
+      name: "Krip Shah",
+      position: "Digital Marketer",
+      imageSrc: "/image/Empol/11 (18).jpg",
+      instagram: "",
       category: "marketing",
-      hiring: true,
     },
     {
       id: 11,
@@ -127,9 +126,9 @@ export default function EmpolSection() {
     },
     {
       id: 12,
-      name: "Krishna Sutar",
+      name: "Aditya Sabnis",
       position: "IT Sales Consultant",
-      imageSrc: "/image/Empol/11 (10).png",
+      imageSrc: "/image/Empol/11 (19).jpg",
       instagram: "https://www.linkedin.com/in/krishna-suthar-4b321a193/",
       category: "sales",
     },
@@ -138,7 +137,7 @@ export default function EmpolSection() {
   const categories = [
     { id: "directors", name: "Directors" },
     { id: "manager", name: "Manager" },
-    { id: "sales", name: "Sales Empol" },
+    { id: "sales", name: "Sales Team" },
     { id: "web", name: "Web Development" },
     { id: "software", name: "Software Developers" },
     { id: "ai", name: "AI Solutions" },

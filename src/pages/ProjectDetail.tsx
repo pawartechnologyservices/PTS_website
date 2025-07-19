@@ -21,94 +21,319 @@ interface Project {
   progress: number;
   tags: string[];
   rating: number;
-  link: string;
+  link: string | null;
+  isSecurity?: boolean;
+  details?: {
+    objectives?: string[];
+    tools?: { category: string; tools: string }[];
+    issues?: { problem: string; solution: string }[];
+    modulesTested?: { module: string; status: string; notes: string }[];
+    deliverables?: string[];
+    riskAssessment?: { category: string; severity: string; status: string }[];
+  };
 }
 
 const projects: Project[] = [
-  {
-    id: "1",
-    title: "Delight Properties and Consultant",
-    description: "High-performance real estate portal with excellent property showcasing capabilities.",
-    status: "Completed",
-    client: "Delight Properties",
-    technology: "Next.js, Tailwind CSS, Node.js",
-    timeline: "3 months",
-    image: "/image/brand/Dig.png",
-    progress: 100,
-    tags: ["Real Estate", "Property Management"],
-    rating: 4.8,
-    link: "https://delightpropertiesandconsultant.com/"
-  },
-  {
-    id: "2",
-    title: "Alburaak Fashion",
-    description: "Scalable e-commerce platform that handles fashion inventory and transactions seamlessly.",
-    status: "Completed",
-    client: "Alburaak Fashion",
-    technology: "Next.js, Shopify, Stripe",
-    timeline: "4 months",
-    image: "/image/brand/Al.png",
-    progress: 100,
-    tags: ["E-commerce", "Fashion Retail"],
-    rating: 4.9,
-    link: "https://www.alburaakfashion.com/"
-  },
-  {
-    id: "3",
-    title: "Vistabella Realty",
-    description: "Interactive real estate website with property filtering and contact management features.",
-    status: "Completed",
-    client: "Vistabella Realty",
-    technology: "React.js, Firebase, Google Maps API",
-    timeline: "2.5 months",
-    image: "/image/brand/v.png",
-    progress: 100,
-    tags: ["Real Estate", "Property Listings"],
-    rating: 4.7,
-    link: "https://vistabellarealty.in/#contact"
-  },
-  {
-    id: "4",
-    title: "Celeb Fashion",
-    description: "Fast, SEO-optimized fashion e-commerce platform with smooth checkout process.",
-    status: "Completed",
-    client: "Celeb Fashion",
-    technology: "Next.js, MongoDB, Stripe",
-    timeline: "3 months",
-    image: "/image/brand/c.png",
-    progress: 100,
-    tags: ["E-commerce", "Fashion"],
-    rating: 4.9,
-    link: "https://www.celebfashion.in/"
-  },
-  {
-    id: "5",
-    title: "Edera Facility Solutions",
-    description: "Modern facility management portal with service request tracking capabilities.",
-    status: "Completed",
-    client: "Edera Facility Solutions",
-    technology: "Next.js, Node.js, PostgreSQL",
-    timeline: "4 months",
-    image: "/image/brand/e.png",
-    progress: 100,
-    tags: ["Facility Management", "Services"],
-    rating: 4.6,
-    link: "https://edera.in/"
-  },
-  {
-    id: "6",
-    title: "Zarinova",
-    description: "A futuristic, animation-rich event platform that supports booking management.",
-    status: "Completed",
-    client: "Zarinova Event Management",
-    technology: "Next.js, Node.js, PostgreSQL",
-    timeline: "4 months",
-    image: "/image/brand/Z.png",
-    progress: 100,
-    tags: ["Events", "Entertainment"],
-    rating: 5.0,
-    link: "https://www.zarinovaevents.com/gallery"
-  }
+    {
+      id: "1",
+      title: "Delight Properties and Consultant",
+      description: "High-performance real estate portal with excellent property showcasing capabilities.",
+      status: "Completed",
+      client: "Delight Properties",
+      technology: "Next.js, Tailwind CSS, Node.js",
+      timeline: "3 months",
+      image: "/image/brand/Dig.png",
+      progress: 100,
+      tags: ["Real Estate", "Property Management"],
+      rating: 4.8,
+      link: "https://delightpropertiesandconsultant.com/"
+    },
+    {
+      id: "2",
+      title: "Alburaak Fashion",
+      description: "Scalable e-commerce platform that handles fashion inventory and transactions seamlessly.",
+      status: "Completed",
+      client: "Alburaak Fashion",
+      technology: "Next.js, Shopify, Stripe",
+      timeline: "4 months",
+      image: "/image/brand/Al.png",
+      progress: 100,
+      tags: ["E-commerce", "Fashion Retail"],
+      rating: 4.9,
+      link: "https://www.alburaakfashion.com/"
+    },
+    {
+      id: "3",
+      title: "Vistabella Realty",
+      description: "Interactive real estate website with property filtering and contact management features.",
+      status: "Completed",
+      client: "Vistabella Realty",
+      technology: "React.js, Firebase, Google Maps API",
+      timeline: "2.5 months",
+      image: "/image/brand/v.png",
+      progress: 100,
+      tags: ["Real Estate", "Property Listings"],
+      rating: 4.7,
+      link: "https://vistabellarealty.in/#contact"
+    },
+    {
+      id: "4",
+      title: "Celeb Fashion",
+      description: "Fast, SEO-optimized fashion e-commerce platform with smooth checkout process.",
+      status: "Completed",
+      client: "Celeb Fashion",
+      technology: "Next.js, MongoDB, Stripe",
+      timeline: "3 months",
+      image: "/image/brand/c.png",
+      progress: 100,
+      tags: ["E-commerce", "Fashion"],
+      rating: 4.9,
+      link: "https://www.celebfashion.in/"
+    },
+    {
+      id: "5",
+      title: "Edera Facility Solutions",
+      description: "Modern facility management portal with service request tracking capabilities.",
+      status: "Completed",
+      client: "Edera Facility Solutions",
+      technology: "Next.js, Node.js, PostgreSQL",
+      timeline: "4 months",
+      image: "/image/brand/e.png",
+      progress: 100,
+      tags: ["Facility Management", "Services"],
+      rating: 4.6,
+      link: "https://edera.in/"
+    },
+    {
+      id: "6",
+      title: "Zarinova",
+      description: "A futuristic, animation-rich event platform that supports booking management.",
+      status: "Completed",
+      client: "Zarinova Event Management",
+      technology: "Next.js, Node.js, PostgreSQL",
+      timeline: "4 months",
+      image: "/image/brand/Z.png",
+      progress: 100,
+      tags: ["Events", "Entertainment"],
+      rating: 5.0,
+      link: "https://www.zarinovaevents.com/gallery"
+    },
+    {
+        id: "7",
+      title: "Dharma Website Security Audit",
+      description: "Full security assessment and UI testing for spiritual NGO website.",
+      status: "Completed",
+      client: "Dharma Organization",
+      technology: "OWASP ZAP, Nikto, Nmap, Postman",
+      timeline: "4 weeks",
+      image: "/image/brand/dharma-security.png",
+      progress: 100,
+      tags: ["Web Security", "Static Site Audit", "UI Testing"],
+      rating: 4.8,
+      link: "https://dharma-website-6.netlify.app",
+      isSecurity: true,
+      details: {
+        objectives: [
+          "Identify vulnerabilities in frontend and Netlify hosting",
+          "Evaluate forms, navigation links, and file permissions",
+          "Validate security headers and SSL configuration",
+          "Provide actionable fixes and verification"
+        ],
+        tools: [
+          { category: "Vulnerability Scanning", tools: "OWASP ZAP" },
+          { category: "Web Server Scan", tools: "Nikto" },
+          { category: "Network Discovery", tools: "Nmap" },
+          { category: "API & Form Testing", tools: "Postman" },
+          { category: "Header Analysis", tools: "SecurityHeaders.com" },
+          { category: "UI/UX Testing", tools: "Chrome DevTools" }
+        ],
+        issues: [
+          { problem: "Missing Security Headers", solution: "Added _headers file in Netlify" },
+          { problem: "Broken Buttons", solution: "Fixed navigation links and frontend code" },
+          { problem: "No HTTPS Redirection", solution: "Enforced via _redirects file" },
+          { problem: "CSRF Protection Missing", solution: "Recommended backend validation" },
+          { problem: "Directory Listing Enabled", solution: "Blocked public access to sensitive folders" },
+          { problem: "No Rate Limiting", solution: "Suggested API rate-limiting and CAPTCHA" },
+          { problem: "No Content Validation", solution: "Enforced input sanitization" }
+        ],
+        deliverables: [
+          "Vulnerability Assessment Report (PDF)",
+          "Technical Recommendations with Code Snippets",
+          "Before/After Screenshots",
+          "UI/UX Testing Checklist (Excel)",
+          "Post-fix Verification"
+        ],
+        riskAssessment: [
+          { category: "SSL/TLS & HTTPS", severity: "High", status: "Secured" },
+          { category: "Security Headers", severity: "High", status: "Secured" },
+          { category: "Navigation & Forms", severity: "Medium", status: "Fixed" },
+          { category: "Admin Exposure", severity: "Medium", status: "Blocked" },
+          { category: "XSS Protection", severity: "High", status: "Patched" },
+          { category: "Rate Limiting", severity: "Medium", status: "Implemented" }
+        ]
+        
+      }
+    },
+    {
+      id: "8",
+      title: "CRM Security & QA Testing",
+      description: "Full security audit and quality assurance testing for custom CRM software.",
+      status: "Completed",
+      client: "Confidential (SMB Client)",
+      technology: "OWASP ZAP, Burp Suite, Selenium, JMeter",
+      timeline: "8 weeks",
+      image: "/image/brand/crm-security.png",
+      progress: 100,
+      tags: ["CRM Security", "QA Testing", "OWASP Top 10"],
+      rating: 4.8,
+      link: null,
+      isSecurity: true,
+      details: {
+        objectives: [
+          "Identify security vulnerabilities in CRM modules and APIs",
+          "Test login, lead management, messaging, report generation",
+          "Analyze role-based access and session control",
+          "Provide technical remediation and security hardening plan"
+        ],
+        tools: [
+          { category: "Vulnerability Testing", tools: "OWASP ZAP, Burp Suite, Nikto, SQLMap" },
+          { category: "Functional Testing", tools: "Postman, Manual UI Testing, Selenium, JMeter" },
+          { category: "Network Scanning", tools: "Nmap, Wireshark" },
+          { category: "Header & Cookie Check", tools: "SecurityHeaders.com, DevTools, Cookie Editor" },
+          { category: "Password Testing", tools: "Hydra, John the Ripper" },
+          { category: "Reporting", tools: "Excel, Word, Screenshot Captures" }
+        ],
+        issues: [
+          { problem: "Insecure Login Authentication", solution: "Added CAPTCHA, rate limit, 2FA" },
+          { problem: "Sensitive Data in URLs", solution: "Replaced with POST + tokenized URLs" },
+          { problem: "SQL Injection on Lead Search", solution: "Parameterized queries, sanitized inputs" },
+          { problem: "Cross-Site Scripting (XSS)", solution: "Input encoding added on both client & server" },
+          { problem: "CSRF Vulnerabilities", solution: "Integrated CSRF protection on backend" },
+          { problem: "Broken Role-Based Access", solution: "Applied strict middleware-level access checks" },
+          { problem: "Session Timeout Missing", solution: "Implemented auto-logout after inactivity" }
+        ],
+        modulesTested: [
+          { module: "Login System", status: "✅ Passed", notes: "After applying 2FA & brute force fix" },
+          { module: "Lead Management", status: "✅ Passed", notes: "All CRUD operations validated" },
+          { module: "Task Scheduling", status: "⚠️ Minor Fixes", notes: "Time-zone bug fixed" },
+          { module: "Messaging (Client Chat)", status: "✅ Passed", notes: "Secure WebSocket tested" },
+          { module: "Reporting System", status: "✅ Passed", notes: "PDF exports & filters validated" },
+          { module: "Admin Panel Access", status: "✅ Passed", notes: "Secured via RBAC" }
+        ],
+        deliverables: [
+          "Vulnerability Audit Report (PDF)",
+          "QA Functional Testing Checklist (Excel)",
+          "Screenshots of Bugs and Proof-of-Concept Attacks",
+          "Recommendations with Code Snippets",
+          "Compliance Readiness for OWASP Top 10"
+        ]
+      }
+    },
+    {
+      id: "9",
+      title: "ERP Software Security Audit",
+      description: "Comprehensive cybersecurity assessment and quality assurance testing for custom ERP system.",
+      status: "Completed",
+      client: "Confidential (Mid-size Indian company)",
+      technology: "OWASP ZAP, Burp Suite, Selenium, JMeter, SQLmap",
+      timeline: "8 weeks",
+      image: "/image/brand/erp-security.png",
+      progress: 100,
+      tags: ["ERP Security", "Penetration Testing", "QA Testing"],
+      rating: 4.9,
+      link: null,
+      isSecurity: true,
+      details: {
+        objectives: [
+          "Conduct end-to-end functional testing of all modules",
+          "Identify critical web application vulnerabilities",
+          "Assess the API and database security",
+          "Provide technical report with fixes and patch plans"
+        ],
+        tools: [
+          { category: "Functional Testing", tools: "Postman, Selenium, JMeter, Manual Testing" },
+          { category: "Vulnerability Scan", tools: "OWASP ZAP, Nikto, Nmap, SQLmap" },
+          { category: "Network Scan", tools: "Nmap, Wireshark" },
+          { category: "API Testing", tools: "Postman" },
+          { category: "Security Analysis", tools: "Burp Suite, SecurityHeaders.com, DevTools" },
+          { category: "Password Testing", tools: "Hydra, John the Ripper" }
+        ],
+        issues: [
+          { problem: "Broken Authentication", solution: "Added 2FA, rate-limiting, and CAPTCHA" },
+          { problem: "Insecure APIs", solution: "Added token validation and access control" },
+          { problem: "SQL Injection", solution: "Implemented parameterized queries" },
+          { problem: "Missing Security Headers", solution: "Configured CSP, HSTS headers" },
+          { problem: "Session Hijacking Risk", solution: "Enabled secure cookie attributes" },
+          { problem: "Broken Business Logic", solution: "Added backend validation checks" },
+          { problem: "Improper RBAC", solution: "Implemented middleware permission checks" },
+          { problem: "Unencrypted Passwords", solution: "Switched to bcrypt hashing" }
+        ],
+        deliverables: [
+          "PDF Vulnerability Report",
+          "Functional Bug Report (Excel)",
+          "Screenshot Evidence",
+          "Fixed Code Snippets (GitHub Repo)",
+          "API Security Checklist",
+          "Final Compliance Certificate"
+        ],
+        riskAssessment: [
+          { category: "Authentication & Sessions", severity: "High", status: "Secured" },
+          { category: "Input/Output Handling", severity: "High", status: "Secured" },
+          { category: "API Authorization", severity: "Medium", status: "Fixed" },
+          { category: "User Interface Bugs", severity: "Medium", status: "Fixed" },
+          { category: "Headers & HTTPS", severity: "High", status: "Patched" },
+          { category: "File/DB Access Controls", severity: "High", status: "Secured" }
+        ]
+      }
+    },
+    {
+      id: "10",
+      title: "Billing Software Security Audit",
+      description: "Comprehensive cybersecurity assessment and testing for retail billing software.",
+      status: "Completed",
+      client: "Confidential (Retail Business)",
+      technology: "OWASP ZAP, SQLmap, Burp Suite, Selenium",
+      timeline: "6 weeks",
+      image: "/image/brand/security.png",
+      progress: 100,
+      tags: ["Cybersecurity", "Penetration Testing", "GST Compliance"],
+      rating: 4.9,
+      link: null,
+      isSecurity: true,
+      details: {
+        objectives: [
+          "Test complete billing workflow and data integrity",
+          "Identify security vulnerabilities (price tampering, PDF manipulation)",
+          "Validate authentication and session security",
+          "Check OWASP Top 10 and GST compliance"
+        ],
+        tools: [
+          { category: "Vulnerability Testing", tools: "OWASP ZAP, SQLmap, Nikto" },
+          { category: "Functional Testing", tools: "Manual UI Testing, Postman, Selenium" },
+          { category: "Header & Auth Checks", tools: "SecurityHeaders.com, Burp Suite" },
+          { category: "Network Testing", tools: "Nmap, Wireshark" },
+          { category: "Data Validation", tools: "Excel, JSON Validator, JMeter" },
+          { category: "PDF Invoice Testing", tools: "PDF.js, Custom Scripts" }
+        ],
+        issues: [
+          { problem: "Price Tampering via URL", solution: "Backend verification added" },
+          { problem: "Invoice ID Enumeration", solution: "Tokenized access validation" },
+          { problem: "SQL Injection on Search", solution: "Parameterized SQL statements" },
+          { problem: "Missing CSRF Protection", solution: "CSRF tokens implemented" },
+          { problem: "Broken Session Management", solution: "Cookie timeout & auto-logout" },
+          { problem: "Insecure PDF Files", solution: "Signed and password-protected PDFs" },
+          { problem: "Incorrect GST Calculation", solution: "Fixed formula and unit testing" }
+        ],
+        deliverables: [
+          "Full Cybersecurity Audit Report (PDF)",
+          "Functional Testing Checklist (Excel)",
+          "Code Snippets for Fixes (GitHub Repo)",
+          "Screenshots (Before/After Proof)",
+          "Final Certification of Software Readiness"
+
+        ]
+      }
+    }
 ];
 
 const ProjectDetail = () => {

@@ -18,7 +18,7 @@ const products = [
     features: ["Inventory Management", "Financial Reporting", "CRM Integration", "Analytics"],
     image: "https://res.cloudinary.com/dwsrcpjv3/image/upload/v1750322045/WhatsApp_Image_2025-06-18_at_17.58.48_9ecb3f99_syyzux.jpg",
     color: "#ff0080",
-    link: "https://pts-erp-systems.netlify.app/" // Placeholder link for ERP
+    link: "https://pts-erp-software.netlify.app/" // Placeholder link for ERP
   },
   {
     title: "Billing & Invoice System (BS)",

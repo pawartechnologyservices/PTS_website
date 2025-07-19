@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import {
-  Star, Building, BookOpen, Settings, CreditCard, Play, Users
+  Star, Building, Settings, Users
 } from 'lucide-react';
 import { Badge } from "@/components/ui/badge";
 
-// Import logo images
-import Logo1 from '/image/brand/10.jpg';
+// Import logo images - make sure these files exist in your project
+import Logo1 from '/image/brand/11.png';
 import Logo2 from '/image/brand/1.jpg';
-import Logo3 from '/image/brand/4.jpg';
+import Logo3 from '/image/brand/6.jpg';
 import Logo4 from '/image/brand/2.jpg';
-import Logo5 from '/image/brand/11.png';
-import Logo6 from '/image/brand/2.jpg';
+import Logo5 from '/image/brand/4.jpg';
 
 interface Testimonial {
   id: number;
@@ -30,75 +29,63 @@ const ClientTestimonials = () => {
   const testimonials: Testimonial[] = [
     {
       id: 1,
-      company: "Shubh Interior",
-      industry: "Interior Design",
-      services: ["Website", "Business Automation"],
-      testimonial: "PTS transformed our manual operations into a fully digital system...",
-      category: "website",
+      company: "Zarinova",
+      industry: "Event Management & Entertainment",
+      services: ["Branding", "Tech Support"],
+      testimonial: "Collaborating with Pawar Technology Services has been a smooth and motivating experience. Their team handles everything from branding to backend tech support, keeping our digital presence and business operations running well. Their knowledge of the event industry makes them the ideal tech partner for Zarinova.",
+      category: "branding",
       rating: 5,
-      highlight: "saved us hours every week",
-      date: "2023-05-15",
+      highlight: "ideal tech partner",
+      date: "2024-01-15",
       logo: Logo1
     },
     {
       id: 2,
-      company: "Dealight Property Consultant",
-      industry: "Real Estate Services",
-      services: ["CRM", "Website"],
-      testimonial: "Before working with PTS, lead tracking and follow-ups were a nightmare...",
+      company: "Delight Properties",
+      industry: "Real Estate",
+      services: ["Website", "Branding"],
+      testimonial: "Collaborating with Pawar Technology Services was one of the smartest things we did for our brand. They caught our vision and turned it into an effective brand image with a stunning, easy-to-use website that reflects our value as a property company.",
       category: "website",
       rating: 5,
-      highlight: "40% increase in our response rate",
-      date: "2023-07-10",
+      highlight: "premium and credible-looking",
+      date: "2024-02-20",
       logo: Logo2
     },
     {
       id: 3,
-      company: "Vista Bella Realty",
-      industry: "Real Estate Firm",
-      services: ["Website", "Property Listing Platform", "Sales Dashboard"],
-      testimonial: "We needed a modern, scalable platform to showcase our projects...",
-      category: "website",
+      company: "Celeb",
+      industry: "Fashion Brand",
+      services: ["Branding", "Website", "Social Media"],
+      testimonial: "The Celeb brand owes its successful launch to PTS who served as an essential partner in its creation. They managed every aspect of our branding development with high levels of creativity and precision, demonstrating perfect understanding of premium fashion brands.",
+      category: "branding",
       rating: 5,
-      highlight: "beautiful, functional website",
-      date: "2023-08-05",
+      highlight: "perfect brand understanding",
+      date: "2024-03-10",
       logo: Logo3
     },
     {
       id: 4,
-      company: "Al-Burrakh Technology",
-      industry: "IT Solutions Company",
-      services: ["Business Support", "Website"],
-      testimonial: "As a tech company, we needed a partner who understands scalability...",
+      company: "Al Buraak Fashion",
+      industry: "Fashion E-Commerce",
+      services: ["Website", "Design", "Technical Support"],
+      testimonial: "PTS took responsibility for handling our fashion website and they surpassed our anticipations. Their team delivers continuous updates and design improvements that keep our platform contemporary, speedy and easy to use.",
       category: "website",
       rating: 5,
-      highlight: "real business consulting",
-      date: "2023-10-18",
+      highlight: "genuine digital partner",
+      date: "2024-04-05",
       logo: Logo4
     },
     {
       id: 5,
-      company: "Zarinova Entertainment",
-      industry: "Events & Media",
-      services: ["Booking Platform", "Website"],
-      testimonial: "Managing bookings, artist schedules, and client follow-ups was messy...",
-      category: "website",
+      company: "Vistabella Realty",
+      industry: "Real Estate",
+      services: ["Website", "Brand Identity"],
+      testimonial: "PTS played a crucial role in boosting our market standing in the competitive real estate sector. We received complete solutions that matched our high-end positioning through website development and brand identity creation.",
+      category: "branding",
       rating: 5,
-      highlight: "everything is organized",
-      date: "2023-11-03",
+      highlight: "exceeded expectations",
+      date: "2024-05-12",
       logo: Logo5
-    },
-    {
-      id: 6,
-      company: "Al-Burrakh Fashion",
-      industry: "Fashion E-Commerce",
-      services: ["E-Commerce Platform"],
-      testimonial: "PTS helped us launch a complete e-commerce store...",
-      category: "website",
-      rating: 5,
-      highlight: "everything works like a charm",
-      date: "2023-12-09",
-      logo: Logo6
     }
   ];
 
@@ -116,11 +103,11 @@ const ClientTestimonials = () => {
   const getServiceIcon = (service: string) => {
     const iconMap: Record<string, JSX.Element> = {
       website: <Building className="h-3 w-3 text-white" />,
-      lms: <BookOpen className="h-3 w-3 text-white" />,
-      erp: <Settings className="h-3 w-3 text-white" />,
-      billing: <CreditCard className="h-3 w-3 text-white" />,
-      automation: <Play className="h-3 w-3 text-white" />,
-      crm: <Users className="h-3 w-3 text-white" />
+      branding: <Star className="h-3 w-3 text-white" />,
+      design: <Settings className="h-3 w-3 text-white" />,
+      tech: <Settings className="h-3 w-3 text-white" />,
+      support: <Users className="h-3 w-3 text-white" />,
+      social: <Users className="h-3 w-3 text-white" />
     };
     const key = service.toLowerCase().replace(/\s+/g, '');
     return iconMap[key] || <Users className="h-3 w-3 text-white" />;
@@ -172,8 +159,6 @@ const ClientTestimonials = () => {
     </Card>
   );
 
-  const topTestimonials = testimonials.slice(0, 5);
-
   return (
     <div className="bg-black py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
       <div className="max-w-7xl mx-auto">
@@ -183,7 +168,7 @@ const ClientTestimonials = () => {
 
         <div className="relative overflow-hidden mb-8">
           <div className="marquee-right-to-left flex space-x-6 py-2">
-            {[...topTestimonials, ...topTestimonials].map((testimonial, index) => (
+            {[...testimonials, ...testimonials].map((testimonial, index) => (
               <div key={`top-${index}`} className="flex-shrink-0 w-80 md:w-96">
                 <TestimonialCard testimonial={testimonial} />
               </div>
