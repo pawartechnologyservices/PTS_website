@@ -123,7 +123,7 @@ const Navbar = () => {
   };
 
   /* -------------------- NAV DATA -------------------- */
-  const comingSoonSections = ["itServices"];
+  const comingSoonItems = ["Cloud Services", "DevOps"];
   const servicesSections = [
     {
       title: "360° BUSINESS SOLUTIONS",
@@ -559,13 +559,6 @@ const Navbar = () => {
                                       <span className="font-medium text-sm lg:text-base">
                                         {section.title}
                                       </span>
-                                      {comingSoonSections.includes(
-                                        section.key
-                                      ) && (
-                                        <span className="text-xs bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full">
-                                          Launching Soon
-                                        </span>
-                                      )}
                                     </div>
                                     {activeSection === section.key &&
                                       section.key !== "founders" && (
@@ -624,8 +617,8 @@ const Navbar = () => {
                                               variants={cardVariants}
                                               whileHover={{ y: -5 }}
                                               className={`bg-white border rounded-xl p-5 shadow-sm hover:shadow-md transition-all ${
-                                                comingSoonSections.includes(
-                                                  section.key
+                                                comingSoonItems.includes(
+                                                  item.label
                                                 )
                                                   ? "opacity-90"
                                                   : ""
@@ -663,21 +656,7 @@ const Navbar = () => {
                                                 </ul>
                                               </div>
 
-                                              {section.key === "itServices" && item.label === "Cyber Security" ? (
-                                                <Link
-                                                  to={item.href}
-                                                  className="w-full flex items-center justify-center gap-2 text-sm font-medium text-gray-600 hover:text-gray-800 bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-lg transition-colors cursor-pointer"
-                                                >
-                                                  Learn more <ArrowRight className="w-4 h-4" />
-                                                </Link>
-                                              ) : section.key === "itServices" ? (
-                                                <button
-                                                  onClick={handleComingSoon}
-                                                  className="w-full flex items-center justify-center gap-2 text-sm font-medium text-gray-400 bg-gray-100 px-4 py-2 rounded-lg cursor-not-allowed"
-                                                >
-                                                  Launching Soon
-                                                </button>
-                                              ) : comingSoonSections.includes(section.key) ? (
+                                              {comingSoonItems.includes(item.label) ? (
                                                 <button
                                                   onClick={handleComingSoon}
                                                   className="w-full flex items-center justify-center gap-2 text-sm font-medium text-gray-400 bg-gray-100 px-4 py-2 rounded-lg cursor-not-allowed"
@@ -729,13 +708,6 @@ const Navbar = () => {
                                             <p className="text-sm text-gray-500 mb-3">
                                               {section.description}
                                             </p>
-                                            {comingSoonSections.includes(
-                                              section.key
-                                            ) && (
-                                              <span className="text-xs text-orange-500">
-                                                Launching Soon
-                                              </span>
-                                            )}
                                             <div className="mt-4 text-gray-600 flex items-center justify-center gap-1 text-sm font-medium">
                                               View services{" "}
                                               <ChevronRight className="w-4 h-4" />
@@ -958,18 +930,6 @@ const Navbar = () => {
                               </span>
                             </div>
                             <div className="flex items-center">
-                              {comingSoonSections.includes(section.key) &&
-                                section.key === "itServices" && (
-                                  <span
-                                    className={`text-xs px-2 py-0.5 rounded-full mr-2 ${
-                                      isDarkBackground
-                                        ? "bg-orange-100 text-orange-700"
-                                        : "bg-orange-900 text-orange-300"
-                                    }`}
-                                  >
-                                    Launching Soon
-                                  </span>
-                                )}
                               {section.key !== "founders" && (
                                 <ChevronRight
                                   className={`w-4 h-4 transition-transform ${
@@ -994,13 +954,26 @@ const Navbar = () => {
                                 >
                                   <div className="grid grid-cols-1 gap-2">
                                     {section.items.map((link, idx) => (
-                                      <div
+                                      <Link
                                         key={idx}
+                                        to={
+                                          comingSoonItems.includes(link.label)
+                                            ? "#"
+                                            : link.href
+                                        }
+                                        onClick={(e) => {
+                                          if (comingSoonItems.includes(link.label)) {
+                                            e.preventDefault();
+                                            setShowComingSoon(true);
+                                          } else {
+                                            setIsOpen(false);
+                                          }
+                                        }}
                                         className={`rounded-lg p-3 ${
                                           isDarkBackground
-                                            ? "bg-gray-100"
-                                            : "bg-gray-800"
-                                        }`}
+                                            ? "bg-gray-100 hover:bg-gray-200"
+                                            : "bg-gray-800 hover:bg-gray-700"
+                                        } transition-colors`}
                                       >
                                         <div className="flex items-start">
                                           <div>
@@ -1014,9 +987,7 @@ const Navbar = () => {
                                               >
                                                 {link.label}
                                               </span>
-                                              {comingSoonSections.includes(
-                                                section.key
-                                              ) && (
+                                              {comingSoonItems.includes(link.label) && (
                                                 <span
                                                   className={`text-xs px-2 py-0.5 rounded-full ${
                                                     isDarkBackground
@@ -1039,7 +1010,7 @@ const Navbar = () => {
                                             </p>
                                           </div>
                                         </div>
-                                      </div>
+                                      </Link>
                                     ))}
                                   </div>
                                 </motion.div>
@@ -1048,7 +1019,7 @@ const Navbar = () => {
                         </div>
                       ))}
                       <Link
-                        to="/"
+                        to="/services"
                         onClick={() => setIsOpen(false)}
                         className={`block px-3 py-2 mt-2 font-semibold text-sm text-center ${
                           isDarkBackground

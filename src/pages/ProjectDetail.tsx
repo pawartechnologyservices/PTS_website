@@ -333,7 +333,63 @@ const projects: Project[] = [
 
         ]
       }
-    }
+    },
+    {
+        id: "11",
+      title: "Dharma Website Security Audit",
+      description: "Full security assessment and UI testing for spiritual NGO website.",
+      status: "Completed",
+      client: "Dharma Organization",
+      technology: "OWASP ZAP, Nikto, Nmap, Postman",
+      timeline: "4 weeks",
+      image: "/image/brand/dharma-security.png",
+      progress: 100,
+      tags: ["Web Security", "Static Site Audit", "UI Testing"],
+      rating: 4.8,
+      link: "",
+      isSecurity: true,
+      details: {
+        objectives: [
+          "Identify vulnerabilities in frontend and Netlify hosting",
+          "Evaluate forms, navigation links, and file permissions",
+          "Validate security headers and SSL configuration",
+          "Provide actionable fixes and verification"
+        ],
+        tools: [
+          { category: "Vulnerability Scanning", tools: "OWASP ZAP" },
+          { category: "Web Server Scan", tools: "Nikto" },
+          { category: "Network Discovery", tools: "Nmap" },
+          { category: "API & Form Testing", tools: "Postman" },
+          { category: "Header Analysis", tools: "SecurityHeaders.com" },
+          { category: "UI/UX Testing", tools: "Chrome DevTools" }
+        ],
+        issues: [
+          { problem: "Missing Security Headers", solution: "Added _headers file in Netlify" },
+          { problem: "Broken Buttons", solution: "Fixed navigation links and frontend code" },
+          { problem: "No HTTPS Redirection", solution: "Enforced via _redirects file" },
+          { problem: "CSRF Protection Missing", solution: "Recommended backend validation" },
+          { problem: "Directory Listing Enabled", solution: "Blocked public access to sensitive folders" },
+          { problem: "No Rate Limiting", solution: "Suggested API rate-limiting and CAPTCHA" },
+          { problem: "No Content Validation", solution: "Enforced input sanitization" }
+        ],
+        deliverables: [
+          "Vulnerability Assessment Report (PDF)",
+          "Technical Recommendations with Code Snippets",
+          "Before/After Screenshots",
+          "UI/UX Testing Checklist (Excel)",
+          "Post-fix Verification"
+        ],
+        riskAssessment: [
+          { category: "SSL/TLS & HTTPS", severity: "High", status: "Secured" },
+          { category: "Security Headers", severity: "High", status: "Secured" },
+          { category: "Navigation & Forms", severity: "Medium", status: "Fixed" },
+          { category: "Admin Exposure", severity: "Medium", status: "Blocked" },
+          { category: "XSS Protection", severity: "High", status: "Patched" },
+          { category: "Rate Limiting", severity: "Medium", status: "Implemented" }
+        ]
+        
+      }
+    },
 ];
 
 const ProjectDetail = () => {

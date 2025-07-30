@@ -168,7 +168,22 @@ const Projects = () => {
       link: null,
       category: "cybersecurity",
       icon: <ShieldCheck className="w-6 h-6" />
-    }
+    },
+     {
+      id: "11",
+      title: "Dharma Website Security Audit",
+      description: "Full security assessment and UI testing for spiritual NGO website.",
+      status: "Completed",
+      client: "Dharma Organization",
+      technology: "OWASP ZAP, Nikto, Nmap, Postman",
+      timeline: "4 weeks",
+      image: "https://res.cloudinary.com/defxobnc3/image/upload/v1752490622/Screenshot_656_cufdxm.png",
+      progress: 100,
+      tags: ["Web Security", "Static Site Audit", "UI Testing"],
+      rating: 4.8,
+      category: "cybersecurity",
+      icon: <ShieldCheck className="w-6 h-6" />
+    },
   ];
 
   // Filter projects based on active filter
